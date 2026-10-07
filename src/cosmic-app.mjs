@@ -1,6 +1,7 @@
 import {mountSubstrate} from './substrate.mjs';
 import {validateCosmic,projectCosmic,eventMolecules,descendants} from './cosmic.mjs';
 import {resolveEntry} from './entry.mjs';
+import {fitSceneY,compactScenePoints} from './cosmic-layout.mjs';
 const $=id=>document.getElementById(id),el=(tag,className='',value='')=>{const n=document.createElement(tag);n.className=className;n.textContent=value;return n;};
 const world=$('atlas-world'), menu=$('world-menu');
 function setEvidence(open){$('matter-inspector').hidden=!open;$('evidence-toggle').setAttribute('aria-expanded',String(open));}
@@ -31,10 +32,25 @@ function positions(nodes){const out=new Map();if(focus==='universe'){out.set('un
  const galaxies=nodes.filter(b=>b.kind==='galaxy');galaxies.forEach((g,i)=>{const x=20+i*30,y=26+(i%2)*8;out.set(g.id,[x,y]);const children=projection.relationships.filter(r=>r.kind==='contains'&&r.from===g.id).map(r=>nodes.find(b=>b.id===r.to)).filter(Boolean);children.forEach((s,j)=>{const sx=x+(j===0?-9:9),sy=y+22;out.set(s.id,[sx,sy]);const planets=projection.relationships.filter(r=>r.kind==='contains'&&r.from===s.id).map(r=>nodes.find(b=>b.id===r.to)).filter(Boolean);planets.forEach((p,k)=>{if(!out.has(p.id))out.set(p.id,[sx+(k%2===0?-5:5),sy+19+Math.floor(k/2)*12]);});});});
  const missing=nodes.filter(n=>n.id!=='universe'&&!out.has(n.id));missing.forEach((n,i)=>out.set(n.id,[12+(i%7)*12,90-Math.floor(i/7)*10]));
  }else{const rest=nodes.filter(b=>b.id!==focus);out.set(focus,[50,45]);rest.forEach((b,i)=>{const a=i/Math.max(1,rest.length)*Math.PI*2-Math.PI/2;out.set(b.id,[50+Math.cos(a)*35,48+Math.sin(a)*31]);});}return out;}
-function drawScene(){const host=$('cosmic-scene');host.replaceChildren(substrate);const ids=new Set(descendants(projection,focus));const direct=new Set(projection.relationships.filter(r=>r.kind==='contains'&&r.from===focus).map(r=>r.to));const narrow=matchMedia('(max-width:600px)').matches;const nodes=projection.bodies.filter(b=>ids.has(b.id)&&(!narrow||b.id===focus||direct.has(b.id)));const points=positions(nodes);if(narrow)for(const point of points.values())point[1]=20+point[1]*.7;const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('field-svg');svg.setAttribute('viewBox','0 0 100 100');svg.setAttribute('preserveAspectRatio','none');svg.setAttribute('aria-hidden','true');
- for(const r of projection.relationships.filter(r=>r.kind==='contains')){const a=points.get(r.from),b=points.get(r.to);if(!a||!b)continue;const line=document.createElementNS(svg.namespaceURI,'line');for(const [key,value] of Object.entries({x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#668fa555','stroke-width':'.12'}))line.setAttribute(key,String(value));svg.append(line);}host.append(svg);
- const atomPoints=new Map();for(const n of nodes){const point=points.get(n.id);if(!point)continue;const b=button(n.label,()=>choose(n.id),'body-button');b.dataset.kind=n.kind;b.dataset.active=n.active;b.dataset.body=n.id;b.style.left=point[0]+'%';b.style.top=point[1]+'%';b.setAttribute('aria-label',`Inspect ${n.label}`);b.setAttribute('aria-pressed',String(selected===n.id));b.prepend(el('span','sphere'));host.append(b);
- const atoms=projection.atoms.filter(e=>e.subject===n.id);atoms.forEach((e,i)=>{const angle=i/Math.max(1,atoms.length)*Math.PI*2+.6;const atom=button('',()=>choose(e.id),'atom');const ap=[point[0]+Math.cos(angle)*4,point[1]+Math.sin(angle)*6];atomPoints.set(e.id,ap);atom.style.left=ap[0]+'%';atom.style.top=ap[1]+'%';atom.setAttribute('aria-label',`Inspect event ${e.id}`);atom.title=e.type;host.append(atom);});}
+function drawScene(){
+ const host=$('cosmic-scene');host.replaceChildren(substrate);
+ const sceneBounds=host.getBoundingClientRect(),hudBounds=document.querySelector('.view-controls').getBoundingClientRect();
+ const compact=sceneBounds.height>0&&sceneBounds.height<420;
+ const narrow=matchMedia('(max-width:600px)').matches;
+ const ids=new Set(descendants(projection,focus));
+ const direct=new Set(projection.relationships.filter(r=>r.kind==='contains'&&r.from===focus).map(r=>r.to));
+ const nodes=projection.bodies.filter(b=>ids.has(b.id)&&(!(narrow||compact)||b.id===focus||direct.has(b.id)));
+ const bodyButtons=new Map();
+ for(const n of nodes){const b=button(n.label,()=>choose(n.id),'body-button');b.dataset.kind=n.kind;b.dataset.active=n.active;b.dataset.body=n.id;b.setAttribute('aria-label',`Inspect ${n.label}`);b.setAttribute('aria-pressed',String(selected===n.id));b.prepend(el('span','sphere'));host.append(b);bodyButtons.set(n.id,b);}
+ const bounds=[...bodyButtons.values()].map(b=>b.getBoundingClientRect());
+ const dimensions={height:sceneBounds.height,hudBottom:hudBounds.bottom-sceneBounds.top,halfButtonHeight:Math.max(0,...bounds.map(b=>b.height/2))};
+ const points=compact?compactScenePoints([focus,...nodes.filter(n=>n.id!==focus).map(n=>n.id)],{width:sceneBounds.width,buttonWidth:Math.max(0,...bounds.map(b=>b.width))}):positions(nodes);
+ if(narrow&&!compact)for(const point of points.values())point[1]=20+point[1]*.7;
+ const fitPoint=([x,y])=>[x,fitSceneY(y,dimensions)];
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('field-svg');svg.setAttribute('viewBox','0 0 100 100');svg.setAttribute('preserveAspectRatio','none');svg.setAttribute('aria-hidden','true');
+ for(const r of projection.relationships.filter(r=>r.kind==='contains')){const from=points.get(r.from),to=points.get(r.to);if(!from||!to)continue;const a=fitPoint(from),b=fitPoint(to);const line=document.createElementNS(svg.namespaceURI,'line');for(const [key,value] of Object.entries({x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#668fa555','stroke-width':'.12'}))line.setAttribute(key,String(value));svg.append(line);}host.append(svg);
+ const atomPoints=new Map();for(const n of nodes){const point=points.get(n.id);if(!point)continue;const fitted=fitPoint(point),b=bodyButtons.get(n.id);b.style.left=fitted[0]+'%';b.style.top=fitted[1]+'%';host.append(b);
+ const atoms=projection.atoms.filter(e=>e.subject===n.id);atoms.forEach((e,i)=>{const angle=i/Math.max(1,atoms.length)*Math.PI*2+.6;const atom=button('',()=>choose(e.id),'atom');const ap=fitPoint([point[0]+Math.cos(angle)*4,point[1]+Math.sin(angle)*6]);atomPoints.set(e.id,ap);atom.style.left=ap[0]+'%';atom.style.top=ap[1]+'%';atom.setAttribute('aria-label',`Inspect event ${e.id}`);atom.title=e.type;host.append(atom);});}
  for(const r of projection.relationships.filter(r=>r.kind==='bond')){const a=atomPoints.get(r.from),b=atomPoints.get(r.to);if(!a||!b)continue;const line=document.createElementNS(svg.namespaceURI,'line');for(const [key,value] of Object.entries({x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:'#8ce4ca','stroke-width':'.22','stroke-dasharray':'1 .7'}))line.setAttribute(key,String(value));svg.append(line);}
 }
 function inspector(){const host=$('matter-inspector');host.replaceChildren();const atom=projection.atoms.find(e=>e.id===selected),body=projection.bodies.find(b=>b.id===selected);
@@ -51,7 +67,7 @@ function render(){const at=epochs[Number($('epoch').value)],knownAt=$('known-the
 $('epoch').addEventListener('input',render);$('known-then').addEventListener('change',render);$('list-toggle').addEventListener('click',()=>{list=!list;render();});$('cosmic-root').addEventListener('click',()=>descend('universe'));$('cosmic-back').addEventListener('click',()=>{const previous=history.pop();if(!previous)return;({focus,selected}=previous);$('epoch').value=previous.epoch;$('known-then').checked=previous.known;render();});
 $('sandbox-entry').addEventListener('click',()=>{const r=resolveEntry({contract:'environment-entry/v0',id:'bounded-world',mode:'sandbox',destination:'/cosmic.html'});$('entry-result').textContent=`${r.code}: an owning server must verify identity, scope, expiry and admission before a sandbox session can begin. No session was created.`;});render();
 
-matchMedia('(max-width:600px)').addEventListener('change',render);
+window.addEventListener('resize',render);
 window.addEventListener('cosmicvisibility',render);
 
 }

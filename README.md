@@ -56,13 +56,15 @@ The nested HTML/CSS/JSON environment is a projection of a graph, not a hierarchy
 
 `npm test` runs offline Node invariants. `npm run check` validates graph/development-path JSON and JavaScript syntax. Optional `node scripts/browser-smoke.cjs` uses Playwright installed in the operator's environment; it is not a runtime dependency. The smoke starts and stops its own local server. Browser acceptance covers selection, reciprocal context, proof/refusal, filtering, back, invalid-source rejection and mobile overflow. See the [foundation receipt](docs/receipts/2026-10-07-foundation.md) for results and limitations.
 
+Optional `node scripts/cosmic-shell-smoke.cjs` checks Cosmic launcher/world landmarks, HUD clearance and body click targets at phone and desktop sizes, then exit focus and re-entry. It also requires operator-provided Playwright and Chromium; `PLAYWRIGHT_CHROMIUM_EXECUTABLE` can select an existing browser. [Layout and accessibility verification](docs/receipts/2026-10-07-cosmic-layout-accessibility.md) records the current checks and browser limitation.
+
 ## Rights and lineage
 
 Apache-2.0 covers this repository's authored code, not third-party source content, datasets or proprietary Atlas materials. Discovery/access does not imply permission to copy, install, redistribute, execute or train on a source. Jarrod Cobb's Hub Technology Codex vision is the origin; GitHub topology, published Swarm boundaries, Lovable-built domain work and Codex collaboration are acknowledged as lineage. No proprietary Atlas implementation was imported.
 
 ## Cosmic event field
 
-Use **Enter the event field** to open `cosmic.html`. Scrub occurrence time, distinguish late-recorded knowledge, inspect explicit event bonds, descend through galaxy/system/planet scales and return to the prior scale. Mobile opens one readable scale at a time. The twin greeting is intentionally text-only.
+Use **Enter the event field** to open `cosmic.html`. Scrub occurrence time, distinguish late-recorded knowledge, inspect explicit event bonds, descend through galaxy/system/planet scales and return to the prior scale. Mobile and short landscape scenes open one navigation scale at a time; short scenes arrange bodies in measured columns below the navigation controls. The twin greeting is intentionally text-only.
 
 This newly authored packet is **synthetic design data**, not private Atlas telemetry. Valid UTC event timestamps, source references, explicit supersession and bounded cyclic containment keep replay inspectable. The entry contract grants navigation only; all sandbox entries are refused until an owning server admission verifier is wired. No background agents or persistent sessions are started.
 
