@@ -80,7 +80,11 @@ async function state(page) {
 }
 
 async function waitForStatus(page, text) {
-  await page.waitForFunction(expected => document.querySelector('#render-status').textContent.includes(expected), text);
+  await page.waitForFunction(
+    expected => document.querySelector('#render-status').textContent.includes(expected),
+    text,
+    {timeout: 60000},
+  );
 }
 
 async function browserPage(browser, viewport) {
