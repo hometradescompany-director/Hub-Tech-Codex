@@ -77,3 +77,7 @@ The mathematical sine-field substrate expands with active projected architecture
 ### Play the first V1 fixture
 
 Use **Play V1 fixture** or open `/v1.html` on the development server. Create a character, travel, practise, forge a focus and cast a spark. Device persistence is opt-in; event history can be exported. This is a newly authored local rehearsal, not the canonical Xianxia engine or a shared server session. [Implementation and agent-dispatch receipt](docs/receipts/2026-10-07-v1-playable.md).
+
+### V1 origin population
+
+[1,000 fictional Earth origins](data/v1-population/README.md) are staged in an offline SQLite database: unique names, varied life paths and 10 consequential decision memories each. [Population design](docs/worlds/V1-POPULATION-DATABASE.md). They have no admitted sessions, world experience or authority. This newly authored cohort is independent of the as-yet unimported professional registry.

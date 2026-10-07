@@ -3,3 +3,4 @@ artifacts/
 .superpowers/
 .worktrees/
 *.log
+data/v1-population/origins.sqlite
