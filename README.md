@@ -67,3 +67,5 @@ Use **Enter the event field** to open `cosmic.html`. Scrub occurrence time, dist
 This newly authored packet is **synthetic design data**, not private Atlas telemetry. Valid UTC event timestamps, source references, explicit supersession and bounded cyclic containment keep replay inspectable. The entry contract grants navigation only; all sandbox entries are refused until an owning server admission verifier is wired. No background agents or persistent sessions are started.
 
 See the [cosmic design](docs/superpowers/specs/2026-10-07-cosmic-entry-design.md) and [verification receipt](docs/receipts/2026-10-07-cosmic-entry.md). Private Atlas runtime/cosmos extensions remain separately owned.
+
+The mathematical sine-field substrate expands with active projected architecture, with pause and reduced-motion controls. Its points are decoration, not events. The twin greeting belongs to the separate V1 experience, represented at the currently unconnected sandbox door. [Substrate receipt](docs/receipts/2026-10-07-substrate.md).
