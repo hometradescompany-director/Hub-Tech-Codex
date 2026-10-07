@@ -16,13 +16,28 @@ These lives are procedural combinations of 16 authored situations. Unique names 
 - [Compressed SQLite database](origins.sqlite.gz): full population; decompress before opening.
 - [Schema](schema.sql): table constraints, foreign keys and chronological-link trigger.
 
-From the repository root, with Node.js 22+ and Python 3:
+The builder supports Node.js 22 or later and Python 3.11–3.13. It requires SQLite 3.37 or later with JSON and foreign-key support, and zlib 1.2.11 or later. CI uses Node.js 22 and Python 3.12.10. A build preflights the selected runtimes and records their Node, Python, SQLite and zlib versions in `runtime.json`, separate from the cohort manifest and artifact hashes.
+
+Set `V1_POPULATION_PYTHON` to the absolute path of one Python interpreter. It is invoked directly with fixed arguments; it is not parsed as a shell command, and population JSON cannot select an interpreter. The invoking Node executable is also passed to Python for validation, so no second Node is selected through `PATH`.
+
+For a disposable standard-library-only environment, create a virtual environment with the selected base Python. For example:
 
 ```sh
-node scripts/build-v1-population.mjs /tmp/v1-population-review v1-earth-2026
-# Refuses existing outputs. Choose another empty directory to rebuild.
-# The builder creates both SQLite and its compressed copy.
-# For a downloaded compressed copy in a separate directory:
+BASE_PYTHON=/usr/bin/python3.12 # replace with the selected base interpreter path
+"$BASE_PYTHON" -m venv .venv
+V1_POPULATION_PYTHON="$PWD/.venv/bin/python" npm test
+V1_POPULATION_PYTHON="$PWD/.venv/bin/python" node scripts/build-v1-population.mjs /tmp/v1-population-review v1-earth-2026
+```
+
+No packages are installed: the generator uses only Python's standard library. The `.venv` isolates dependencies; it is not a permission or security sandbox. The equivalent Windows virtual-environment interpreter path is `.venv\Scripts\python.exe`.
+
+The output directory and seed are required positional arguments. The output path is resolved relative to the caller's current directory; authored scripts and schema are resolved relative to the repository. Builds refuse to overwrite an existing database, export, manifest, index, samples or runtime receipt. Choose an empty directory for each build.
+
+The cohort `content_digest` is the stable content comparison across supported runtime builds. `origins.sqlite` and `origins.sqlite.gz` hashes identify exact binary artifacts and may differ across SQLite/zlib builds; a binary difference alone is not a reason to rewrite committed hashes. Compare content digests and database constraints separately when investigating runtime drift.
+
+For a downloaded compressed copy in a separate directory:
+
+```sh
 gzip -dk origins.sqlite.gz
 ```
 

@@ -12,6 +12,10 @@ test('builder resolves authored scripts from another working directory',()=>{
   const out=join(dir,'output');
   const result=spawnSync(process.execPath,[builder,out,'other-cwd'],{cwd:dir,encoding:'utf8',env:{...process.env,V1_POPULATION_PYTHON:python}});
   assert.equal(result.status,0,result.stderr);assert.ok(existsSync(join(out,'origins.sqlite')));
+  const manifest=JSON.parse(readFileSync(join(out,'manifest.json'),'utf8'));
+  const runtime=JSON.parse(readFileSync(join(out,'runtime.json'),'utf8'));
+  assert.equal(runtime.node.version,process.version);assert.deepEqual(Object.keys(runtime).sort(),['node','python','sqlite','zlib']);
+  assert.equal(Object.hasOwn(manifest,'runtime'),false);
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
 test('builder uses the configured Python despite a misleading PATH',()=>{
@@ -28,7 +32,7 @@ test('builder refuses a missing configured Python before publishing a database',
  const dir=mkdtempSync(join(tmpdir(),'v1-no-python-'));try{
   const out=join(dir,'output');
   const result=spawnSync(process.execPath,[builder,out,'missing-python'],{cwd:root,encoding:'utf8',env:{...process.env,V1_POPULATION_PYTHON:join(dir,'missing-python')}});
-  assert.notEqual(result.status,0);assert.equal(existsSync(join(out,'origins.sqlite')),false);assert.equal(existsSync(join(out,'origins.sqlite.gz')),false);
+  assert.notEqual(result.status,0);assert.equal(existsSync(join(out,'origins.sqlite')),false);assert.equal(existsSync(join(out,'origins.sqlite.gz')),false);assert.equal(existsSync(out),false);
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
 test('SQLite import retains named people, decision links and explicit fictional provenance',()=>{

@@ -80,4 +80,4 @@ Use **Play V1 fixture** or open `/v1.html` on the development server. Create a c
 
 ### V1 origin population
 
-[1,000 fictional Earth origins](data/v1-population/README.md) are staged in an offline SQLite database: unique names, varied life paths and 10 consequential decision memories each. [Population design](docs/worlds/V1-POPULATION-DATABASE.md). They have no admitted sessions, world experience or authority. This newly authored cohort is independent of the as-yet unimported professional registry.
+[1,000 fictional Earth origins](data/v1-population/README.md) are staged in an offline SQLite database: unique names, varied life paths and 10 consequential decision memories each. [Population design](docs/worlds/V1-POPULATION-DATABASE.md). The builder requires Node.js 22+ and an explicitly selected Python 3.11–3.13 interpreter; its runtime receipt stays separate from cohort metadata. They have no admitted sessions, world experience or authority. This newly authored cohort is independent of the as-yet unimported professional registry.
