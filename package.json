@@ -1,0 +1,6 @@
+{
+  "name":"hub-tech-codex","version":"0.1.0","private":true,"type":"module",
+  "description":"GitHub-grounded topology-first discovery environment",
+  "license":"Apache-2.0","engines":{"node":">=22"},
+  "scripts":{"test":"node --test test/*.test.mjs","check":"node scripts/check.mjs","start":"node scripts/serve.mjs","discover":"node scripts/discover.mjs"}
+}

@@ -1,0 +1,190 @@
+{
+  "version": "hub-paths/v0",
+  "foundation": "feat/hub-environment-v0",
+  "paths": [
+    {
+      "id": "source-intelligence",
+      "title": "GitHub intelligence",
+      "summary": "Read repository metadata, pinned manifests, releases and source changes.",
+      "owner": "GitHub observations",
+      "branch": "feature/source-intelligence",
+      "dependsOn": [
+        "foundation"
+      ],
+      "acceptance": "Bounded pagination; conditional refresh; pinned file provenance; rate-limit tests.",
+      "standing": "planned"
+    },
+    {
+      "id": "diamond-tool-adapters",
+      "title": "Diamond tool adapters",
+      "summary": "Discover compatible tools and datasets; map each to an existing bounded operation.",
+      "owner": "Operation adapters",
+      "branch": "feature/diamond-tool-adapters",
+      "dependsOn": [
+        "source-intelligence"
+      ],
+      "acceptance": "Licence/terms review; explicit target grant; no arbitrary shell; replayable receipts.",
+      "standing": "planned"
+    },
+    {
+      "id": "surface-navigation",
+      "title": "Surface navigation",
+      "summary": "Deepen nested surfaces, spatial transitions and interchangeable identity lenses.",
+      "owner": "Rendering",
+      "branch": "feature/surface-navigation",
+      "dependsOn": [
+        "foundation"
+      ],
+      "acceptance": "Keyboard and touch parity; reduced motion; context restored across every lens.",
+      "standing": "planned"
+    },
+    {
+      "id": "reciprocal-events",
+      "title": "Reciprocal event continuity",
+      "summary": "Preserve relationship changes and observations with versioned event references.",
+      "owner": "Graph continuity",
+      "branch": "feature/reciprocal-events",
+      "dependsOn": [
+        "foundation"
+      ],
+      "acceptance": "Inverse paths derive from one edge; correction/supersession; bounded replay without duplicated truth.",
+      "standing": "planned"
+    },
+    {
+      "id": "domain-lenses",
+      "title": "Domain lenses",
+      "summary": "Represent maps, property, media and professional workflows over their own domain truth.",
+      "owner": "Projection adapters",
+      "branch": "feature/domain-lenses",
+      "dependsOn": [
+        "surface-navigation",
+        "reciprocal-events"
+      ],
+      "acceptance": "Same identities across lenses; explicit absent data; domain ownership and privacy retained.",
+      "standing": "planned"
+    },
+    {
+      "id": "agent-interfaces",
+      "title": "Agent interfaces",
+      "summary": "Expose bounded discovery/read/proposal contracts for tools and agents.",
+      "owner": "Machine interface",
+      "branch": "feature/agent-interfaces",
+      "dependsOn": [
+        "source-intelligence",
+        "reciprocal-events"
+      ],
+      "acceptance": "Typed I/O; capability limits; no promotion or execution implied by discovery.",
+      "standing": "planned"
+    },
+    {
+      "id": "federation-transport",
+      "title": "Federation transport",
+      "summary": "Connect accepted contracts to Atlas, Diamond and Swarm when real hosts and scoped credentials exist.",
+      "owner": "Network adapters",
+      "branch": "feature/federation-transport",
+      "dependsOn": [
+        "diamond-tool-adapters",
+        "agent-interfaces"
+      ],
+      "acceptance": "Verified authenticated roundtrip; expiry/revocation; idempotency; secrets server-only.",
+      "standing": "planned"
+    },
+    {
+      "id": "domain-seq-maps",
+      "title": "SEQ Maps lens",
+      "summary": "Civic/map sources and descriptive traffic proof; synthetic first.",
+      "owner": "Domain projection",
+      "branch": "domain/seq-maps",
+      "dependsOn": [
+        "domain-lenses"
+      ],
+      "acceptance": "Read-only synthetic projection; source references; domain-owned truth; privacy and absence tests.",
+      "standing": "planned"
+    },
+    {
+      "id": "domain-property",
+      "title": "Property lens",
+      "summary": "Long-lived property identity; private evidence never exported.",
+      "owner": "Domain projection",
+      "branch": "domain/property",
+      "dependsOn": [
+        "domain-lenses"
+      ],
+      "acceptance": "Read-only synthetic projection; source references; domain-owned truth; privacy and absence tests.",
+      "standing": "planned"
+    },
+    {
+      "id": "domain-trade",
+      "title": "Trade lens",
+      "summary": "Trade operator projections; no ratification of deferred Atlas extraction.",
+      "owner": "Domain projection",
+      "branch": "domain/trade",
+      "dependsOn": [
+        "domain-lenses"
+      ],
+      "acceptance": "Read-only synthetic projection; source references; domain-owned truth; privacy and absence tests.",
+      "standing": "planned"
+    },
+    {
+      "id": "domain-professional",
+      "title": "Professional roles lens",
+      "summary": "Role/capability/source projections; no automatic credential or competence claims.",
+      "owner": "Domain projection",
+      "branch": "domain/professional",
+      "dependsOn": [
+        "domain-lenses"
+      ],
+      "acceptance": "Read-only synthetic projection; source references; domain-owned truth; privacy and absence tests.",
+      "standing": "planned"
+    },
+    {
+      "id": "domain-media",
+      "title": "Media / World Weaver lens",
+      "summary": "Transformation lineage, rights standing and protected-region evidence.",
+      "owner": "Domain projection",
+      "branch": "domain/media",
+      "dependsOn": [
+        "domain-lenses"
+      ],
+      "acceptance": "Read-only synthetic projection; source references; domain-owned truth; privacy and absence tests.",
+      "standing": "planned"
+    },
+    {
+      "id": "domain-health",
+      "title": "Health lens",
+      "summary": "Synthetic continuity/consent views only; no clinical decisions or live health data.",
+      "owner": "Domain projection",
+      "branch": "domain/health",
+      "dependsOn": [
+        "domain-lenses"
+      ],
+      "acceptance": "Read-only synthetic projection; source references; domain-owned truth; privacy and absence tests.",
+      "standing": "planned"
+    },
+    {
+      "id": "domain-software",
+      "title": "Software hubs lens",
+      "summary": "Repository/tool/database relationships and explicit compatibility observations.",
+      "owner": "Domain projection",
+      "branch": "domain/software",
+      "dependsOn": [
+        "domain-lenses"
+      ],
+      "acceptance": "Read-only synthetic projection; source references; domain-owned truth; privacy and absence tests.",
+      "standing": "planned"
+    },
+    {
+      "id": "physical-interfaces",
+      "title": "Physical interface research",
+      "summary": "Wearables, spatial interfaces and embodiment remain research. No hardware actuation.",
+      "owner": "Research",
+      "branch": "research/physical-interfaces",
+      "dependsOn": [
+        "surface-navigation",
+        "agent-interfaces"
+      ],
+      "acceptance": "Documented I/O boundary, safety/authority contract and display-only synthetic probe.",
+      "standing": "planned"
+    }
+  ]
+}

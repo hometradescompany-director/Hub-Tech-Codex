@@ -1,0 +1,5 @@
+import {readFile,readdir} from 'node:fs/promises';import {spawnSync} from 'node:child_process';
+import {validateGraph} from '../src/graph.mjs';import {validatePaths} from '../src/paths.mjs';
+validateGraph(JSON.parse(await readFile(new URL('../data/constellation.json',import.meta.url))));validatePaths(JSON.parse(await readFile(new URL('../data/development-paths.json',import.meta.url))));
+for(const dir of ['src','scripts'])for(const file of await readdir(new URL(`../${dir}/`,import.meta.url))){if(!/\.(mjs|cjs)$/.test(file))continue;const r=spawnSync(process.execPath,['--check',`${dir}/${file}`],{stdio:'inherit'});if(r.status!==0)process.exit(r.status||1);}
+console.log('Graph, development paths and JavaScript syntax validated.');

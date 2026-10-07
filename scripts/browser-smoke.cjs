@@ -1,0 +1,23 @@
+// Optional verification tool: requires Playwright in the operator's environment.
+// It is not required to run the app or the dependency-free Node tests.
+const {chromium}=require('playwright');
+const {spawn}=require('node:child_process');
+const assert=require('node:assert/strict');const fs=require('node:fs');
+(async()=>{const server=spawn(process.execPath,['scripts/serve.mjs'],{env:{...process.env,PORT:'4173'},stdio:['ignore','pipe','pipe']});
+ await new Promise((resolve,reject)=>{server.stdout.once('data',resolve);server.once('error',reject);server.once('exit',code=>reject(new Error('Server exited '+code)));});
+ let browser;try{browser=await chromium.launch({headless:true,args:['--no-proxy-server'],...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
+ const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:4173');await page.waitForSelector('.node.core');
+ await page.getByRole('button',{name:'Explore Diamond',exact:true}).click();assert.match(await page.locator('#inspector h2').textContent(),/Diamond/);
+ await page.getByRole('button',{name:'Open bounded inventory proof'}).click();await page.locator('#run-proof').click();await page.waitForFunction(()=>document.getElementById('proof-result').textContent.includes('demonstrated'));assert.match(await page.locator('#proof-result').textContent(),/local-inert-demo/);
+ await page.locator('#demo-authority').uncheck();await page.locator('#run-proof').click();await page.waitForFunction(()=>document.getElementById('proof-result').textContent.includes('authority_absent'));await page.getByRole('button',{name:'Close Diamond proof'}).click();
+ await page.locator('[data-lens=list]').click();await page.locator('#search').fill('Swarm');assert.equal(await page.locator('.card').count(),2);await page.locator('[data-lens=nested]').click();await page.locator('#back').click();assert.equal(await page.locator('#search').inputValue(),'Swarm');
+ await page.locator('#open-source').click();await page.locator('#repository-input').fill('https://evil.example/repo');await page.locator('#observe-submit').click();await page.waitForFunction(()=>document.getElementById('source-result').textContent.includes('invalid_repository'));await page.getByRole('button',{name:'Close source observer'}).click();
+ await page.route('https://api.github.com/repos/example/hostile**',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(route.request().url().includes('/commits/')?{sha:'b'.repeat(40)}:{id:999,full_name:'example/hostile',private:false,default_branch:'main',description:'<img src=x onerror=window.hostileExecuted=true>',license:null})}));
+ await page.locator('#open-source').click();await page.locator('#repository-input').fill('example/hostile');await page.locator('#observe-submit').click();await page.waitForFunction(()=>document.getElementById('status').textContent.includes('Observed example/hostile'));
+ assert.match(await page.locator('#inspector-content').textContent(),/<img src=x onerror=window.hostileExecuted=true>/);assert.equal(await page.evaluate(()=>window.hostileExecuted),undefined);assert.equal(await page.locator('#inspector-content img').count(),0);
+ await page.getByRole('button',{name:/Hub Tech Codex.*incoming.*discovered/}).click();assert.equal(await page.locator('#inspector h2').textContent(),'Hub Tech Codex');
+ await page.locator('#search').fill('');await page.locator('[data-lens=constellation]').click();fs.mkdirSync('artifacts',{recursive:true});await page.screenshot({path:'artifacts/desktop.png',fullPage:true});
+ await page.setViewportSize({width:390,height:844});await page.screenshot({path:'artifacts/mobile.png',fullPage:true});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'mobile horizontal overflow');assert.deepEqual(errors,[]);
+ console.log('Browser smoke: selection, proof/refusal, filters, back, invalid source, mocked import/hostile text, reciprocal traversal, desktop/mobile PASS');
+}finally{if(browser)await browser.close();server.kill();}})().catch(e=>{console.error(e);process.exitCode=1});
