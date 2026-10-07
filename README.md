@@ -73,3 +73,7 @@ The mathematical sine-field substrate expands with active projected architecture
 ## V1 world map
 
 [V1 rendered architecture and mechanics](docs/worlds/V1.md) separates the playable world from Atlas Cosmic World and records progression, forging/magic interactions, exceptional outcomes, sustainable transitions, ownership and deferred decisions. [Public reuse candidates](docs/worlds/PUBLIC-REUSE.md) pins inspected upstream revisions; none is installed. [The architecture map](data/v1-architecture.json) describes proposed interfaces, not live connections.
+
+### Play the first V1 fixture
+
+Use **Play V1 fixture** or open `/v1.html` on the development server. Create a character, travel, practise, forge a focus and cast a spark. Device persistence is opt-in; event history can be exported. This is a newly authored local rehearsal, not the canonical Xianxia engine or a shared server session. [Implementation and agent-dispatch receipt](docs/receipts/2026-10-07-v1-playable.md).
