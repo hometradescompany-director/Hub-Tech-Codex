@@ -69,3 +69,7 @@ This newly authored packet is **synthetic design data**, not private Atlas telem
 See the [cosmic design](docs/superpowers/specs/2026-10-07-cosmic-entry-design.md) and [verification receipt](docs/receipts/2026-10-07-cosmic-entry.md). Private Atlas runtime/cosmos extensions remain separately owned.
 
 The mathematical sine-field substrate expands with active projected architecture, with pause and reduced-motion controls. Its points are decoration, not events. The twin greeting belongs to the separate V1 experience, represented at the currently unconnected sandbox door. [Substrate receipt](docs/receipts/2026-10-07-substrate.md).
+
+## V1 world map
+
+[V1 rendered architecture and mechanics](docs/worlds/V1.md) separates the playable world from Atlas Cosmic World and records progression, forging/magic interactions, exceptional outcomes, sustainable transitions, ownership and deferred decisions. [Public reuse candidates](docs/worlds/PUBLIC-REUSE.md) pins inspected upstream revisions; none is installed. [The architecture map](data/v1-architecture.json) describes proposed interfaces, not live connections.
