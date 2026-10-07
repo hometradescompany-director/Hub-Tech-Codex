@@ -1,0 +1,14 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {validateGraph,related,walk,searchNodes} from '../src/graph.mjs';
+import {createNavigation,navigate,goBack} from '../src/navigation.mjs';
+const node=(id)=>({id,label:id,kind:'hub',standing:'declared',summary:'',source:{kind:'declaration',ref:'test'}});
+const graph={version:'hub-graph/v0',nodes:['a','b','c'].map(node),edges:[{id:'ab',from:'a',to:'b',kind:'uses',standing:'declared'},{id:'bc',from:'b',to:'c',kind:'uses',standing:'declared'},{id:'ca',from:'c',to:'a',kind:'uses',standing:'declared'}]};
+test('graph rejects duplicate identities',()=>assert.throws(()=>validateGraph({...graph,nodes:[...graph.nodes,node('a')]}),/duplicate/i));
+test('graph rejects dangling relationships',()=>assert.throws(()=>validateGraph({...graph,edges:[{id:'x',from:'a',to:'missing',kind:'uses',standing:'declared'}]}),/unknown/i));
+test('one relationship supports reciprocal navigation',()=>{assert.equal(validateGraph(graph),graph);assert.equal(related(graph,'b').find(x=>x.node.id==='a').direction,'incoming');assert.equal(related(graph,'a').find(x=>x.node.id==='b').direction,'outgoing')});
+test('cyclic walk remains bounded and visits identity once',()=>{assert.deepEqual(walk(graph,'a',{limit:2}).map(x=>x.id),['a','b']);assert.equal(walk(graph,'a',{limit:20}).length,3)});
+test('unknown selection fails rather than inventing identity',()=>assert.throws(()=>related(graph,'nope'),/unknown/i));
+test('search filters stable identities without mutating source',()=>{assert.deepEqual(searchNodes(graph,'B','hub').map(x=>x.id),['b']);assert.equal(graph.nodes.length,3)});
+test('back restores full lens/filter/selection context',()=>{let s=createNavigation({selected:'a',lens:'constellation',query:'hello',kind:'hub'});s=navigate(s,{selected:'b',lens:'nested',query:''});s=goBack(s);assert.deepEqual(s.current,{selected:'a',lens:'constellation',query:'hello',kind:'hub'});assert.equal(s.history.length,0)});
+test('navigation history is bounded',()=>{let s=createNavigation({selected:'a'});for(let i=0;i<150;i++)s=navigate(s,{selected:String(i)});assert.equal(s.history.length,100)});

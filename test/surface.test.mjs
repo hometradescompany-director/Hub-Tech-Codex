@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+test('entry surface contains semantic navigation and status boundaries',async()=>{const html=await readFile(new URL('../index.html',import.meta.url),'utf8');for(const marker of ['id="explorer"','id="inspector"','id="search"','id="source-dialog"','id="proof-dialog"','aria-live="polite"','type="module"'])assert.ok(html.includes(marker),marker)});

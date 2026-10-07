@@ -1,0 +1,430 @@
+{
+  "version": "hub-graph/v0",
+  "title": "Core constellation",
+  "snapshot": "Design seed \u00b7 7 October 2026",
+  "nodes": [
+    {
+      "id": "codex",
+      "label": "Hub Tech Codex",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "A navigable environment for repositories, capabilities and evidence.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "repo:Hub-Tech-Codex",
+      "label": "Hub-Tech-Codex",
+      "kind": "repository",
+      "standing": "declared",
+      "summary": "Repository embodiment. Import public metadata to create an observed snapshot.",
+      "url": "https://github.com/hometradescompany-director/Hub-Tech-Codex",
+      "source": {
+        "kind": "repository-reference",
+        "ref": "https://github.com/hometradescompany-director/Hub-Tech-Codex"
+      }
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "kind": "api",
+      "standing": "declared",
+      "summary": "Canonical repository source, commits, branches and review history.",
+      "source": {
+        "kind": "public-source",
+        "ref": "https://github.com"
+      },
+      "url": "https://github.com"
+    },
+    {
+      "id": "diamond",
+      "label": "Diamond",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Bounded defensive catalogue; execution belongs to its authority gate.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "repo:diamond-security-suite",
+      "label": "diamond-security-suite",
+      "kind": "repository",
+      "standing": "declared",
+      "summary": "Repository embodiment. Import public metadata to create an observed snapshot.",
+      "url": "https://github.com/hometradescompany-director/diamond-security-suite",
+      "source": {
+        "kind": "repository-reference",
+        "ref": "https://github.com/hometradescompany-director/diamond-security-suite"
+      }
+    },
+    {
+      "id": "swarm",
+      "label": "Swarm Home Hub",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Local lifecycle and bounded execution infrastructure; runtime deployment remains separate.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "repo:Swarm-Home-Hub",
+      "label": "Swarm-Home-Hub",
+      "kind": "repository",
+      "standing": "declared",
+      "summary": "Repository embodiment. Import public metadata to create an observed snapshot.",
+      "url": "https://github.com/hometradescompany-director/Swarm-Home-Hub",
+      "source": {
+        "kind": "repository-reference",
+        "ref": "https://github.com/hometradescompany-director/Swarm-Home-Hub"
+      }
+    },
+    {
+      "id": "foundry",
+      "label": "Skills Foundry",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Procedure provenance and reusable capability packages.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "maps",
+      "label": "SEQ Maps",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Civic source observations and descriptive traffic intelligence.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "repo:SEQ-Maps",
+      "label": "SEQ-Maps",
+      "kind": "repository",
+      "standing": "declared",
+      "summary": "Repository embodiment. Import public metadata to create an observed snapshot.",
+      "url": "https://github.com/hometradescompany-director/SEQ-Maps",
+      "source": {
+        "kind": "repository-reference",
+        "ref": "https://github.com/hometradescompany-director/SEQ-Maps"
+      }
+    },
+    {
+      "id": "forge",
+      "label": "Media Forge / World Weaver",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Media continuity, transformations and inspectable provenance.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "trade",
+      "label": "Trade Hubs",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Operator-owned workflow identity and event continuity.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "property",
+      "label": "Property Hubs",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Long-lived asset identity and stewardship history.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "homeflow",
+      "label": "HomeFlow",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Spatial product with its own privacy boundary.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "atlas",
+      "label": "Atlas",
+      "kind": "hub",
+      "standing": "declared",
+      "summary": "Independent stewardship and federation authority; proprietary source is excluded.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "inventory",
+      "label": "Dependency inventory",
+      "kind": "tool",
+      "standing": "declared",
+      "summary": "Inert parsing of a supplied package manifest. Local demonstration only.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "advisory",
+      "label": "Advisory lookup",
+      "kind": "tool",
+      "standing": "declared",
+      "summary": "Diamond public advisory operation; remote execution is not connected here.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "sources",
+      "label": "Source observations",
+      "kind": "database",
+      "standing": "planned",
+      "summary": "Versioned source observations; never a replacement for source authority.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "surfaces",
+      "label": "Surface environment",
+      "kind": "surface",
+      "standing": "planned",
+      "summary": "Nested, reciprocal views over the same identity graph.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    },
+    {
+      "id": "agents",
+      "label": "Agent interfaces",
+      "kind": "agent",
+      "standing": "planned",
+      "summary": "Future bounded read and proposal interfaces; no execution permission inferred.",
+      "source": {
+        "kind": "design-declaration",
+        "ref": "docs/superpowers/specs/2026-10-07-hub-environment-design.md"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "codex/references/github",
+      "from": "codex",
+      "to": "github",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/diamond",
+      "from": "codex",
+      "to": "diamond",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/swarm",
+      "from": "codex",
+      "to": "swarm",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/foundry",
+      "from": "codex",
+      "to": "foundry",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/maps",
+      "from": "codex",
+      "to": "maps",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/forge",
+      "from": "codex",
+      "to": "forge",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/trade",
+      "from": "codex",
+      "to": "trade",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/property",
+      "from": "codex",
+      "to": "property",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/homeflow",
+      "from": "codex",
+      "to": "homeflow",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/atlas",
+      "from": "codex",
+      "to": "atlas",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/surfaces",
+      "from": "codex",
+      "to": "surfaces",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/agents",
+      "from": "codex",
+      "to": "agents",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/references/sources",
+      "from": "codex",
+      "to": "sources",
+      "kind": "references",
+      "standing": "declared"
+    },
+    {
+      "id": "codex/embodied-by/repo:Hub-Tech-Codex",
+      "from": "codex",
+      "to": "repo:Hub-Tech-Codex",
+      "kind": "embodied-by",
+      "standing": "declared"
+    },
+    {
+      "id": "repo:Hub-Tech-Codex/sourced-from/github",
+      "from": "repo:Hub-Tech-Codex",
+      "to": "github",
+      "kind": "sourced-from",
+      "standing": "declared"
+    },
+    {
+      "id": "swarm/embodied-by/repo:Swarm-Home-Hub",
+      "from": "swarm",
+      "to": "repo:Swarm-Home-Hub",
+      "kind": "embodied-by",
+      "standing": "declared"
+    },
+    {
+      "id": "repo:Swarm-Home-Hub/sourced-from/github",
+      "from": "repo:Swarm-Home-Hub",
+      "to": "github",
+      "kind": "sourced-from",
+      "standing": "declared"
+    },
+    {
+      "id": "diamond/embodied-by/repo:diamond-security-suite",
+      "from": "diamond",
+      "to": "repo:diamond-security-suite",
+      "kind": "embodied-by",
+      "standing": "declared"
+    },
+    {
+      "id": "repo:diamond-security-suite/sourced-from/github",
+      "from": "repo:diamond-security-suite",
+      "to": "github",
+      "kind": "sourced-from",
+      "standing": "declared"
+    },
+    {
+      "id": "maps/embodied-by/repo:SEQ-Maps",
+      "from": "maps",
+      "to": "repo:SEQ-Maps",
+      "kind": "embodied-by",
+      "standing": "declared"
+    },
+    {
+      "id": "repo:SEQ-Maps/sourced-from/github",
+      "from": "repo:SEQ-Maps",
+      "to": "github",
+      "kind": "sourced-from",
+      "standing": "declared"
+    },
+    {
+      "id": "diamond/offers/inventory",
+      "from": "diamond",
+      "to": "inventory",
+      "kind": "offers",
+      "standing": "declared"
+    },
+    {
+      "id": "diamond/offers/advisory",
+      "from": "diamond",
+      "to": "advisory",
+      "kind": "offers",
+      "standing": "declared"
+    },
+    {
+      "id": "surfaces/projects/codex",
+      "from": "surfaces",
+      "to": "codex",
+      "kind": "projects",
+      "standing": "declared"
+    },
+    {
+      "id": "maps/may-consume/sources",
+      "from": "maps",
+      "to": "sources",
+      "kind": "may-consume",
+      "standing": "planned"
+    },
+    {
+      "id": "agents/may-navigate/surfaces",
+      "from": "agents",
+      "to": "surfaces",
+      "kind": "may-navigate",
+      "standing": "planned"
+    },
+    {
+      "id": "diamond/reports-to/atlas",
+      "from": "diamond",
+      "to": "atlas",
+      "kind": "reports-to",
+      "standing": "planned"
+    },
+    {
+      "id": "swarm/federates-with/atlas",
+      "from": "swarm",
+      "to": "atlas",
+      "kind": "federates-with",
+      "standing": "declared"
+    }
+  ]
+}
