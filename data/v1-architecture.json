@@ -1,0 +1,205 @@
+{
+  "contract": "v1-architecture-map/v0",
+  "standing": "incubation_design",
+  "origin": {
+    "actor": "Jarrod Cobb",
+    "date": "2026-10-07",
+    "timezone": "Australia/Brisbane",
+    "source": "author direction in development conversation"
+  },
+  "grantsAuthority": false,
+  "nodes": [
+    {
+      "id": "hub",
+      "label": "Hub Tech Codex",
+      "standing": "existing_public_surface"
+    },
+    {
+      "id": "cosmic",
+      "label": "Atlas Cosmic World",
+      "standing": "existing_projection_private_release_pending"
+    },
+    {
+      "id": "entry",
+      "label": "V1 entry and return",
+      "standing": "planned"
+    },
+    {
+      "id": "session",
+      "label": "Owned world session",
+      "standing": "planned_integration"
+    },
+    {
+      "id": "character",
+      "label": "Character creation and sheet",
+      "standing": "existing_work_reported_inspection_required"
+    },
+    {
+      "id": "actions",
+      "label": "Human and agent actions",
+      "standing": "planned_integration"
+    },
+    {
+      "id": "rules",
+      "label": "Versioned world rules",
+      "standing": "planned_extension"
+    },
+    {
+      "id": "log",
+      "label": "World event record",
+      "standing": "existing_owner_inspected_private"
+    },
+    {
+      "id": "state",
+      "label": "Derived world state",
+      "standing": "existing_owner_inspected_private"
+    },
+    {
+      "id": "map",
+      "label": "Place graph and local scene",
+      "standing": "planned_rendered_map"
+    },
+    {
+      "id": "forge",
+      "label": "Forge and practice surfaces",
+      "standing": "planned"
+    },
+    {
+      "id": "ability",
+      "label": "Magic and ability surfaces",
+      "standing": "planned"
+    },
+    {
+      "id": "evidence",
+      "label": "Scoped evidence projection",
+      "standing": "planned_integration"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "v1-map:0",
+      "from": "hub",
+      "to": "entry",
+      "kind": "routes_to",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:1",
+      "from": "entry",
+      "to": "session",
+      "kind": "requests_admission",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:2",
+      "from": "session",
+      "to": "character",
+      "kind": "binds_by_reference",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:3",
+      "from": "character",
+      "to": "actions",
+      "kind": "presents_actions",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:4",
+      "from": "actions",
+      "to": "rules",
+      "kind": "requests_transition",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:5",
+      "from": "rules",
+      "to": "log",
+      "kind": "records_accepted_transition",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:6",
+      "from": "log",
+      "to": "state",
+      "kind": "derives",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:7",
+      "from": "state",
+      "to": "map",
+      "kind": "projects",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:8",
+      "from": "state",
+      "to": "forge",
+      "kind": "projects",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:9",
+      "from": "state",
+      "to": "ability",
+      "kind": "projects",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:10",
+      "from": "map",
+      "to": "actions",
+      "kind": "presents_actions",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:11",
+      "from": "log",
+      "to": "evidence",
+      "kind": "projects_scoped_evidence",
+      "standing": "declared_interface_not_connected"
+    },
+    {
+      "id": "v1-map:12",
+      "from": "evidence",
+      "to": "cosmic",
+      "kind": "proposed_federation",
+      "standing": "declared_interface_not_connected"
+    }
+  ],
+  "candidates": [
+    {
+      "repo": "BabylonJS/Babylon.js",
+      "sha": "a78e0fe21c8a5349329610b5cec6d063b17935cb",
+      "licenceStanding": "declared_main_code",
+      "licence": "Apache-2.0",
+      "role": "Browser 3D and WebXR renderer candidate",
+      "integration": "not_installed_not_verified"
+    },
+    {
+      "repo": "colyseus/colyseus",
+      "sha": "74c7f66e7261fd7d333ab760ed235d918c7bd1fa",
+      "licenceStanding": "declared_main_code",
+      "licence": "MIT",
+      "role": "Optional authoritative multiplayer transport candidate",
+      "integration": "not_installed_not_verified"
+    },
+    {
+      "repo": "dimforge/rapier",
+      "sha": "3406750a38286a0d3c7d0f4be2f9d53153e81d90",
+      "licenceStanding": "declared_main_code",
+      "licence": "Apache-2.0",
+      "role": "Optional bounded collision/physics adapter candidate",
+      "integration": "not_installed_not_verified"
+    },
+    {
+      "repo": "godotengine/godot",
+      "sha": "3ea0cf3e72699c5e3b35f7956670ac93b9d1d4a0",
+      "licenceStanding": "declared_main_code",
+      "licence": "MIT",
+      "role": "Alternative native/desktop engine path",
+      "integration": "not_installed_not_verified"
+    }
+  ]
+}
