@@ -1,0 +1,485 @@
+{
+  "version": "cosmic-field/v0",
+  "standing": "synthetic",
+  "description": "A newly authored synthetic design fixture. Layout is an illustration of proposed relationships, never private runtime telemetry or an A1-A1 doctrine resolution.",
+  "bodies": [
+    {
+      "id": "universe",
+      "kind": "universe",
+      "label": "Endless \u00b7 event field",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "g:architecture",
+      "kind": "galaxy",
+      "label": "Architecture",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "g:worlds",
+      "kind": "galaxy",
+      "label": "Bounded worlds",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "g:domains",
+      "kind": "galaxy",
+      "label": "Domain hubs",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "s:spine",
+      "kind": "system",
+      "label": "Identity \u00b7 event spine",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "s:continuity",
+      "kind": "system",
+      "label": "Continuity",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "s:development",
+      "kind": "system",
+      "label": "Entity development",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "s:reality",
+      "kind": "system",
+      "label": "Reality generator",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "s:software",
+      "kind": "system",
+      "label": "Software ecosystem",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "s:operations",
+      "kind": "system",
+      "label": "Product environments",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:atlas",
+      "kind": "planet",
+      "label": "Atlas",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:alice",
+      "kind": "planet",
+      "label": "Alice \u00b7 emergence objective",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:foundry",
+      "kind": "planet",
+      "label": "Skills Foundry",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:swarm",
+      "kind": "planet",
+      "label": "Swarm \u00b7 residence",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:a1a1",
+      "kind": "planet",
+      "label": "A1-A1 \u00b7 unresolved perspective",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:xia",
+      "kind": "planet",
+      "label": "XIA / Xianxia",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:codex",
+      "kind": "planet",
+      "label": "Hub Tech Codex",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:diamond",
+      "kind": "planet",
+      "label": "Diamond",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:homeflow",
+      "kind": "planet",
+      "label": "Home Flow",
+      "source": "fixture:cosmic-design-2026-10-07"
+    },
+    {
+      "id": "p:trade",
+      "kind": "planet",
+      "label": "Trade Hubs",
+      "source": "fixture:cosmic-design-2026-10-07"
+    }
+  ],
+  "events": [
+    {
+      "id": "event:00",
+      "subject": "universe",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:00:00Z",
+      "recordedAt": "2026-10-07T00:00:00Z"
+    },
+    {
+      "id": "event:01",
+      "subject": "g:architecture",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:05:00Z",
+      "recordedAt": "2026-10-07T00:05:00Z"
+    },
+    {
+      "id": "event:02",
+      "subject": "g:worlds",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:10:00Z",
+      "recordedAt": "2026-10-07T00:10:00Z"
+    },
+    {
+      "id": "event:03",
+      "subject": "g:domains",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:15:00Z",
+      "recordedAt": "2026-10-07T00:15:00Z"
+    },
+    {
+      "id": "event:04",
+      "subject": "s:spine",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:20:00Z",
+      "recordedAt": "2026-10-07T00:20:00Z"
+    },
+    {
+      "id": "event:05",
+      "subject": "s:continuity",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:25:00Z",
+      "recordedAt": "2026-10-07T00:25:00Z"
+    },
+    {
+      "id": "event:06",
+      "subject": "s:development",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:30:00Z",
+      "recordedAt": "2026-10-07T00:30:00Z"
+    },
+    {
+      "id": "event:07",
+      "subject": "s:reality",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:35:00Z",
+      "recordedAt": "2026-10-07T00:35:00Z"
+    },
+    {
+      "id": "event:08",
+      "subject": "s:software",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:40:00Z",
+      "recordedAt": "2026-10-07T00:40:00Z"
+    },
+    {
+      "id": "event:09",
+      "subject": "s:operations",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:45:00Z",
+      "recordedAt": "2026-10-07T00:45:00Z"
+    },
+    {
+      "id": "event:10",
+      "subject": "p:atlas",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:50:00Z",
+      "recordedAt": "2026-10-07T00:50:00Z"
+    },
+    {
+      "id": "event:11",
+      "subject": "p:alice",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T00:55:00Z",
+      "recordedAt": "2026-10-07T00:55:00Z"
+    },
+    {
+      "id": "event:12",
+      "subject": "p:foundry",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T01:00:00Z",
+      "recordedAt": "2026-10-07T01:00:00Z"
+    },
+    {
+      "id": "event:13",
+      "subject": "p:swarm",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T01:05:00Z",
+      "recordedAt": "2026-10-07T01:05:00Z"
+    },
+    {
+      "id": "event:14",
+      "subject": "p:a1a1",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T01:10:00Z",
+      "recordedAt": "2026-10-07T01:30:00Z"
+    },
+    {
+      "id": "event:15",
+      "subject": "p:xia",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T01:15:00Z",
+      "recordedAt": "2026-10-07T01:15:00Z"
+    },
+    {
+      "id": "event:16",
+      "subject": "p:codex",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T01:20:00Z",
+      "recordedAt": "2026-10-07T01:20:00Z"
+    },
+    {
+      "id": "event:17",
+      "subject": "p:diamond",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T01:25:00Z",
+      "recordedAt": "2026-10-07T01:25:00Z"
+    },
+    {
+      "id": "event:18",
+      "subject": "p:homeflow",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T01:30:00Z",
+      "recordedAt": "2026-10-07T01:30:00Z"
+    },
+    {
+      "id": "event:19",
+      "subject": "p:trade",
+      "type": "fixture.body_formed",
+      "actor": "fixture:design-author",
+      "source": "fixture:cosmic-design-2026-10-07",
+      "standing": "fixture",
+      "occurredAt": "2026-10-07T01:35:00Z",
+      "recordedAt": "2026-10-07T01:35:00Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "containment:1",
+      "from": "universe",
+      "to": "g:architecture",
+      "kind": "contains",
+      "establishedBy": "event:01"
+    },
+    {
+      "id": "containment:2",
+      "from": "universe",
+      "to": "g:worlds",
+      "kind": "contains",
+      "establishedBy": "event:02"
+    },
+    {
+      "id": "containment:3",
+      "from": "universe",
+      "to": "g:domains",
+      "kind": "contains",
+      "establishedBy": "event:03"
+    },
+    {
+      "id": "containment:4",
+      "from": "g:architecture",
+      "to": "s:spine",
+      "kind": "contains",
+      "establishedBy": "event:04"
+    },
+    {
+      "id": "containment:5",
+      "from": "g:architecture",
+      "to": "s:continuity",
+      "kind": "contains",
+      "establishedBy": "event:05"
+    },
+    {
+      "id": "containment:6",
+      "from": "g:worlds",
+      "to": "s:development",
+      "kind": "contains",
+      "establishedBy": "event:06"
+    },
+    {
+      "id": "containment:7",
+      "from": "g:worlds",
+      "to": "s:reality",
+      "kind": "contains",
+      "establishedBy": "event:07"
+    },
+    {
+      "id": "containment:8",
+      "from": "g:domains",
+      "to": "s:software",
+      "kind": "contains",
+      "establishedBy": "event:08"
+    },
+    {
+      "id": "containment:9",
+      "from": "g:domains",
+      "to": "s:operations",
+      "kind": "contains",
+      "establishedBy": "event:09"
+    },
+    {
+      "id": "containment:10",
+      "from": "s:spine",
+      "to": "p:atlas",
+      "kind": "contains",
+      "establishedBy": "event:10"
+    },
+    {
+      "id": "containment:11",
+      "from": "s:continuity",
+      "to": "p:alice",
+      "kind": "contains",
+      "establishedBy": "event:11"
+    },
+    {
+      "id": "containment:12",
+      "from": "s:continuity",
+      "to": "p:foundry",
+      "kind": "contains",
+      "establishedBy": "event:12"
+    },
+    {
+      "id": "containment:13",
+      "from": "s:development",
+      "to": "p:swarm",
+      "kind": "contains",
+      "establishedBy": "event:13"
+    },
+    {
+      "id": "containment:14",
+      "from": "s:development",
+      "to": "p:a1a1",
+      "kind": "contains",
+      "establishedBy": "event:14"
+    },
+    {
+      "id": "containment:15",
+      "from": "s:reality",
+      "to": "p:xia",
+      "kind": "contains",
+      "establishedBy": "event:15"
+    },
+    {
+      "id": "containment:16",
+      "from": "s:software",
+      "to": "p:codex",
+      "kind": "contains",
+      "establishedBy": "event:16"
+    },
+    {
+      "id": "containment:17",
+      "from": "s:software",
+      "to": "p:diamond",
+      "kind": "contains",
+      "establishedBy": "event:17"
+    },
+    {
+      "id": "containment:18",
+      "from": "s:operations",
+      "to": "p:homeflow",
+      "kind": "contains",
+      "establishedBy": "event:18"
+    },
+    {
+      "id": "containment:19",
+      "from": "s:operations",
+      "to": "p:trade",
+      "kind": "contains",
+      "establishedBy": "event:19"
+    },
+    {
+      "id": "bond:spine-kernel",
+      "from": "event:04",
+      "to": "event:10",
+      "kind": "bond",
+      "establishedBy": "event:10"
+    },
+    {
+      "id": "bond:continuity-skills",
+      "from": "event:05",
+      "to": "event:12",
+      "kind": "bond",
+      "establishedBy": "event:12"
+    },
+    {
+      "id": "relation:codex-world-lens",
+      "from": "s:reality",
+      "to": "p:codex",
+      "kind": "contains",
+      "establishedBy": "event:16"
+    }
+  ]
+}

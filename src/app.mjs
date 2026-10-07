@@ -1,3 +1,4 @@
+import {resolveEntry} from './entry.mjs';
 import {validateGraph,related,searchNodes,KINDS,safeLink} from './graph.mjs';
 import {createNavigation,navigate,goBack} from './navigation.mjs';
 import {observeRepository} from './github.mjs';
@@ -5,6 +6,7 @@ import {reviewInventory} from './diamond.mjs';
 import {validatePaths} from './paths.mjs';
 const $=id=>document.getElementById(id);
 const el=(tag,className='',text='')=>{const n=document.createElement(tag);n.className=className;n.textContent=text;return n;};
+const entry=resolveEntry({contract:'environment-entry/v0',id:'codex-cosmos',mode:'projection',destination:'/cosmic.html'});if(entry.ok)$('enter-cosmic').href=entry.destination;
 const symbols={hub:'◇',repository:'⌘',tool:'⚒',database:'▤',api:'↗',dataset:'▧',agent:'✧',surface:'▣'};
 const read=async(path)=>{const r=await fetch(path);if(!r.ok)throw new Error('Environment data unavailable');return r.json();};
 let graph,paths,state=createNavigation({selected:'codex'});
