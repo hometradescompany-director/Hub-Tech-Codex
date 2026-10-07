@@ -59,3 +59,11 @@ The nested HTML/CSS/JSON environment is a projection of a graph, not a hierarchy
 ## Rights and lineage
 
 Apache-2.0 covers this repository's authored code, not third-party source content, datasets or proprietary Atlas materials. Discovery/access does not imply permission to copy, install, redistribute, execute or train on a source. Jarrod Cobb's Hub Technology Codex vision is the origin; GitHub topology, published Swarm boundaries, Lovable-built domain work and Codex collaboration are acknowledged as lineage. No proprietary Atlas implementation was imported.
+
+## Cosmic event field
+
+Use **Enter the event field** to open `cosmic.html`. Scrub occurrence time, distinguish late-recorded knowledge, inspect explicit event bonds, descend through galaxy/system/planet scales and return to the prior scale. Mobile opens one readable scale at a time. The twin greeting is intentionally text-only.
+
+This newly authored packet is **synthetic design data**, not private Atlas telemetry. Valid UTC event timestamps, source references, explicit supersession and bounded cyclic containment keep replay inspectable. The entry contract grants navigation only; all sandbox entries are refused until an owning server admission verifier is wired. No background agents or persistent sessions are started.
+
+See the [cosmic design](docs/superpowers/specs/2026-10-07-cosmic-entry-design.md) and [verification receipt](docs/receipts/2026-10-07-cosmic-entry.md). Private Atlas runtime/cosmos extensions remain separately owned.

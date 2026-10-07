@@ -1,0 +1,19 @@
+# Cosmic event field and shared entry — first slice
+
+Origin: Jarrod Cobb, 7 October 2026, Brisbane. Requested direction: the original spinal cosmic map represents the actual architecture; events appear as atoms, explicit event bonds as molecules, and maintained systems as planets, systems and galaxies. The bounded XIA/Xianxia RPG environment is a separate scale, supporting entity development while Atlas/Alice emergence remains an objective rather than an established capability. One initial server deployment precedes federation scaling.
+
+## Ownership and placement
+The Codex owns rendering and public discovery, with no private Atlas source or runtime authority. Event source owners retain their immutable events, identity and relationships. Cosmic geometry is a read projection under Events/Relationships/Evidence, never a sixth spine layer or second ledger. Atlas owns its kernel and admission boundary. World Weaver owns its existing server-authoritative Xianxia run engine, log and snapshot reconciliation. Skills Foundry owns reusable procedures; Causality Gundam remains canonical there. A1-A1's provisional perspective model remains active and unresolved.
+
+## Deliverable
+A separate cosmic lens reached by an obvious Enter link from the existing Codex. It loads an explicitly synthetic event field, renders a navigable galaxy/system/planet hierarchy and each event atom, and lets the reader scrub occurrence time. Stable references and explicit containment form bodies; raw counts do not invent identities. Replay rebuilds views from the same source packet, including late records and superseding relationships. A molecule is connected by declared event links; temporal proximity alone cannot establish causation. Each body exposes membership/evidence and each atom exposes occurrence, recording, actor, source and standing. Unknowns remain explicit; malformed/dangling packets are rejected wholesale with a visible unavailable state. Multiple parents and cycles stay bounded.
+
+Shared entry is a versioned descriptor with a relative local or credential-free HTTPS destination and mode `projection` or `sandbox`. Projection entry opens a read view; sandbox entry is refused unless the owning server supplies an admission receipt. A rendered button or greeting is never that receipt. Return context stays local and bounded. No automatic URL probes, remote execution or credentials.
+
+The greeting preserves the two opposing twins: “Hello world” and “Welcome to the shit show.” First slice uses plain text, no animation/character asset spend. Character design and opening cinematic are deferred. Keyboard, touch, reduced motion and a readable event list accompany the cosmic view.
+
+## Runtime counterpart
+Extend Atlas's existing server entry, not a new event server: a public, payload-free `atlas-runtime/v0` discovery descriptor and honest readiness response. Admission operations, durable sessions, scheduler/tick loop, backups, capability expiry/revocation and authenticated roundtrip remain required activation proofs; no descriptor implies they exist. One deployment identity references existing authorities; adding replicas cannot split identity/event ownership. Private implementation and activation plan remain in private repositories.
+
+## Constraints and acceptance
+Node >=22, no new Codex package dependencies. Replay timestamps use valid UTC ISO-8601 coordinates ending in Z. Maximum 5,000 bodies/events and 20,000 relationships; traversal visits stable IDs once. No imported HTML execution. No PII or secrets in descriptors. Deterministic replay, conflict refusal, explicit supersession, no inferred causation, safe destination validation, denied sandbox entry, successful projection entry and desktop/mobile interaction are tested. Existing Codex tests remain green. Public fixture is newly authored synthetic content; private project inspection informs placement only.
