@@ -10,7 +10,7 @@ A separate cosmic lens reached by an obvious Enter link from the existing Codex.
 
 Shared entry is a versioned descriptor with a relative local or credential-free HTTPS destination and mode `projection` or `sandbox`. Projection entry opens a read view; sandbox entry is refused unless the owning server supplies an admission receipt. A rendered button or greeting is never that receipt. Return context stays local and bounded. No automatic URL probes, remote execution or credentials.
 
-The greeting preserves the two opposing twins: “Hello world” and “Welcome to the shit show.” First slice uses plain text, no animation/character asset spend. Character design and opening cinematic are deferred. Keyboard, touch, reduced motion and a readable event list accompany the cosmic view.
+Clarification, 7 October: the greeting belongs to the separate V1 world, represented here at its unconnected door. It preserves the two opposing twins: “Hello world” and “Welcome to the shit show.” First slice uses plain text, no animation/character asset spend. Character design and opening cinematic are deferred. Keyboard, touch, reduced motion and a readable event list accompany the cosmic view.
 
 ## Runtime counterpart
 Extend Atlas's existing server entry, not a new event server: a public, payload-free `atlas-runtime/v0` discovery descriptor and honest readiness response. Admission operations, durable sessions, scheduler/tick loop, backups, capability expiry/revocation and authenticated roundtrip remain required activation proofs; no descriptor implies they exist. One deployment identity references existing authorities; adding replicas cannot split identity/event ownership. Private implementation and activation plan remain in private repositories.
