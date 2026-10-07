@@ -125,14 +125,17 @@ async function exerciseViewport(browser, origin, label, viewport) {
   const graphics = await page.evaluate(() => {
     const canvas = document.querySelector('#scene');
     const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+    const rendererInfo = gl?.getExtension('WEBGL_debug_renderer_info');
     return {
       context: gl?.getParameter(gl.VERSION),
+      renderer: rendererInfo && gl.getParameter(rendererInfo.UNMASKED_RENDERER_WEBGL),
       lost: gl?.isContextLost(),
       canvasWidth: canvas.width,
       canvasHeight: canvas.height,
     };
   });
   assert.match(graphics.context ?? '', /WebGL 2\.0/);
+  assert.match(graphics.renderer ?? '', /SwiftShader/);
   assert.equal(graphics.lost, false);
   assert.ok(observed.responses.some(({url, status}) => new URL(url).pathname.endsWith('/node_modules/@babylonjs/core/index.js') && status === 200));
 
