@@ -1,0 +1,1 @@
+{"name":"v1-renderer-probe","version":"0.1.0","private":true,"type":"module","license":"Apache-2.0","scripts":{"start":"node server.mjs","test":"node --test test/*.test.mjs","check":"node --check adapter.mjs && node --check controller.mjs && node --check view.mjs && node --check server.mjs"},"dependencies":{"@babylonjs/core":"8.32.0"}}
