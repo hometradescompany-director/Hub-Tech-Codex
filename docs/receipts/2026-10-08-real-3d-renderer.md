@@ -12,8 +12,9 @@ The first iteration is an actual interactive 3D scene. It does not certify final
 
 - Geometry tests cover literal perspective/depth coordinates, centre rays, nearest/behind picking, extreme aspect/vertical cameras, smooth indexed meshes and stable cyclic/multi-parent layout without source mutation.
 - Adapter tests cover all original body/event IDs, explicit edges, descending context and Hub source IDs.
-- Full Node suite and graph/syntax checks pass locally. Browser launch is unavailable locally because the Playwright browser executable is absent.
-- The PR adds a pinned operator-only Playwright browser CI check and uploaded desktop/phone screenshots. Its result must be read before claiming browser verification.
+- All 62 Node tests and graph/syntax checks pass locally and in CI. Browser launch is unavailable locally because the Playwright browser executable is absent; the actual browser verification ran in GitHub Actions.
+- [Browser verification run 37710205279](https://github.com/hometradescompany-director/Hub-Tech-Codex/actions/runs/37710205279) passed both operator-only Playwright checks against code commit `31a7757f457a5454232dfafc68f141c04b737313`: actual WebGL draw with no GPU errors, orbit, opaque-mesh selection, evidence, replay, desktop/phone projection, shell entry/exit, source import, hostile-text refusal, reciprocal traversal and proof/refusal. Desktop/phone screenshots were downloaded and visually inspected. This verifies Chromium with software WebGL, not performance across all GPU/device combinations.
+- A fresh source review identified invisible-envelope selection, foreground path ordering, cleanup after failed shader initialization and obsolete browser selectors. All four were corrected; mesh-hole/nearest-visible selection and failed-init cleanup have regression coverage. The source-navigation smoke follows the recorded Universe → Architecture → Identity/event spine → Atlas containment path.
 - The in-conversation scene is generated from these same source modules and the accepted synthetic fixture; it makes the current art/interaction direction reviewable.
 
 The earlier 2D HUD coordinate helper/smoke was replaced by 3D camera and WebGL verification; its dated receipt records the earlier iteration only. No production deployment, paid account action, private source import or live runtime admission.
