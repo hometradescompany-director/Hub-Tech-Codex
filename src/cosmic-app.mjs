@@ -18,7 +18,7 @@ $('native-fullscreen').addEventListener('click',async()=>{try{if(document.fullsc
 document.addEventListener('fullscreenchange',()=>{$('native-fullscreen').textContent=document.fullscreenElement===world?'Window mode':'Fullscreen';});
 document.addEventListener('keydown',event=>{if(event.key!=='Escape'||world.hidden||menu.open)return;if(!$('matter-inspector').hidden){setEvidence(false);$('evidence-toggle').focus();}else{menu.showModal();}event.preventDefault();});
 async function start(){
-let packet;try{const response=await fetch('./data/cosmic-fixture.json');if(!response.ok)throw new Error('Fixture unavailable');packet=validateCosmic(await response.json());}catch{ $('cosmic-scene').append(el('p','caption','Source packet rejected or unavailable. No partial event history was accepted.'));$('matter-inspector').textContent='Source unavailable. Return to the hub to choose another path.';$('epoch').disabled=true;$('sandbox-entry').disabled=true;return;}
+let packet;try{const response=await fetch('./data/cosmic-fixture.json');if(!response.ok)throw new Error('Fixture unavailable');packet=validateCosmic(await response.json());}catch{ $('cosmic-scene').append(el('p','caption','Source packet rejected or unavailable. No partial event history was accepted.'));$('matter-inspector').textContent='Source unavailable. Return to the hub to choose another path.';$('epoch').disabled=true;$('sandbox-entry').disabled=true;$('enter-atlas').disabled=false;return;}
 const epochs=[...new Set(packet.events.flatMap(e=>[e.occurredAt,e.recordedAt]))].sort((a,b)=>Date.parse(a)-Date.parse(b));
 let selected='universe',focus='universe',history=[],list=false,projection;
 const scene3d=mountWorld3D($('cosmic-scene'),{onSelect:id=>choose(id),onError:message=>{$('world-status').textContent=message;}});
@@ -47,6 +47,6 @@ $('sandbox-entry').addEventListener('click',()=>{const r=resolveEntry({contract:
 
 window.addEventListener('resize',render);
 window.addEventListener('cosmicvisibility',render);
-
+$('enter-atlas').disabled=false;
 }
 start();
