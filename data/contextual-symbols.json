@@ -1,0 +1,184 @@
+{
+  "version": "contextual-symbols/v0",
+  "standing": "candidate",
+  "grantsAuthority": false,
+  "records": [
+    {
+      "id": "symbol:feedback-loop",
+      "motif": "loop",
+      "context": "development:feedback",
+      "meaning": "An observation can inform another bounded attempt. Each attempt keeps its own evidence and authorization.",
+      "invariants": [
+        "A feedback cycle does not carry permission into the next tool call.",
+        "Every revision preserves the observation that informed it."
+      ],
+      "failureExamples": [
+        "A successful prior call is used to authorize another call after its scope expires."
+      ],
+      "revision": 1,
+      "source": {
+        "reference": "user:visual-reference-01-17969",
+        "attribution": "unknown",
+        "assetRights": "unknown"
+      }
+    },
+    {
+      "id": "symbol:replay-loop",
+      "motif": "loop",
+      "context": "continuity:replay",
+      "meaning": "Replay revisits recorded events while preserving the distinction between occurrence and later knowledge.",
+      "invariants": [
+        "Replay does not reissue recorded actions.",
+        "A late-arriving event retains both occurrence and recording coordinates."
+      ],
+      "failureExamples": [
+        "Replaying a payment event sends the payment again."
+      ],
+      "revision": 1,
+      "source": {
+        "reference": "user:visual-reference-01-17969",
+        "attribution": "unknown",
+        "assetRights": "unknown"
+      }
+    },
+    {
+      "id": "symbol:coherent-field",
+      "motif": "aligned-field",
+      "context": "architecture:coherence",
+      "meaning": "Separate projections can be compared against shared source references without becoming a shared mutable truth store.",
+      "invariants": [
+        "Canonical facts remain with their owning source.",
+        "Agreement between projections is not independent corroboration."
+      ],
+      "failureExamples": [
+        "Two views of the same event are counted as two independent sources."
+      ],
+      "revision": 1,
+      "source": {
+        "reference": "user:visual-reference-02-17968",
+        "attribution": "unknown",
+        "assetRights": "unknown"
+      }
+    },
+    {
+      "id": "symbol:modular-boundary",
+      "motif": "nested-boundary",
+      "context": "architecture:bounded-modules",
+      "meaning": "Nested modules expose typed interfaces and explicit limits. Visual containment describes a view rather than a grant of ownership.",
+      "invariants": [
+        "Each module names its input, output and failure boundary.",
+        "A parent node does not automatically inherit a child's tool permissions."
+      ],
+      "failureExamples": [
+        "Being drawn inside a host is treated as authority to invoke its private tools."
+      ],
+      "revision": 1,
+      "source": {
+        "reference": "user:visual-reference-03-17966",
+        "attribution": "unknown",
+        "assetRights": "unknown"
+      }
+    },
+    {
+      "id": "symbol:reciprocal-geometry",
+      "motif": "paired-paths",
+      "context": "architecture:reciprocity",
+      "meaning": "Both directions of navigation derive from one explicit relation; geometric closeness adds no relation.",
+      "invariants": [
+        "Reverse navigation preserves the same edge identity.",
+        "Layout cannot create causation, permission or source custody."
+      ],
+      "failureExamples": [
+        "Nearby event atoms are joined as a causal chain without an explicit bond."
+      ],
+      "revision": 1,
+      "source": {
+        "reference": "user:visual-reference-07-17960",
+        "attribution": "unknown",
+        "assetRights": "unknown"
+      }
+    },
+    {
+      "id": "symbol:identity-expression",
+      "motif": "expression-layers",
+      "context": "continuity:identity-expression",
+      "meaning": "A stable subject identity can have context-dependent expression while every claimed change retains its source and revision.",
+      "invariants": [
+        "Contextual presentation does not create a replacement canonical identity.",
+        "A change of expression cannot broaden the subject's authority."
+      ],
+      "failureExamples": [
+        "A new role label silently grants capabilities to an existing agent."
+      ],
+      "revision": 1,
+      "source": {
+        "reference": "user:visual-reference-06-17961",
+        "attribution": "unknown",
+        "assetRights": "unknown"
+      }
+    },
+    {
+      "id": "symbol:passive-origin",
+      "motif": "origin-point",
+      "context": "worlds:passive-origin",
+      "meaning": "An origin is a navigational reference. Descending into a world requires its own explicit admission contract.",
+      "invariants": [
+        "Origin and containment imply no command channel.",
+        "Discovery and admission remain distinct decisions."
+      ],
+      "failureExamples": [
+        "Selecting an origin node creates a sandbox session without identity, scope or expiry checks."
+      ],
+      "revision": 1,
+      "source": {
+        "reference": "user:visual-reference-08-17955",
+        "attribution": "unknown",
+        "assetRights": "unknown"
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "subject": "s:development",
+      "recordId": "symbol:feedback-loop",
+      "revision": 1,
+      "context": "development:feedback"
+    },
+    {
+      "subject": "s:continuity",
+      "recordId": "symbol:replay-loop",
+      "revision": 1,
+      "context": "continuity:replay"
+    },
+    {
+      "subject": "s:continuity",
+      "recordId": "symbol:identity-expression",
+      "revision": 1,
+      "context": "continuity:identity-expression"
+    },
+    {
+      "subject": "g:architecture",
+      "recordId": "symbol:coherent-field",
+      "revision": 1,
+      "context": "architecture:coherence"
+    },
+    {
+      "subject": "g:architecture",
+      "recordId": "symbol:modular-boundary",
+      "revision": 1,
+      "context": "architecture:bounded-modules"
+    },
+    {
+      "subject": "s:spine",
+      "recordId": "symbol:reciprocal-geometry",
+      "revision": 1,
+      "context": "architecture:reciprocity"
+    },
+    {
+      "subject": "g:worlds",
+      "recordId": "symbol:passive-origin",
+      "revision": 1,
+      "context": "worlds:passive-origin"
+    }
+  ]
+}

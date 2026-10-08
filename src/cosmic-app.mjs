@@ -1,6 +1,7 @@
 import {mountSubstrate} from './substrate.mjs';
 import {validateCosmic,projectCosmic,eventMolecules,descendants} from './cosmic.mjs';
 import {resolveEntry} from './entry.mjs';
+import {validateSymbols,symbolsForSubject} from './contextual-symbols.mjs';
 const $=id=>document.getElementById(id),el=(tag,className='',value='')=>{const n=document.createElement(tag);n.className=className;n.textContent=value;return n;};
 const world=$('atlas-world'), menu=$('world-menu');
 function setEvidence(open){$('matter-inspector').hidden=!open;$('evidence-toggle').setAttribute('aria-expanded',String(open));}
@@ -20,6 +21,7 @@ async function start(){
 let packet;try{const response=await fetch('./data/cosmic-fixture.json');if(!response.ok)throw new Error('Fixture unavailable');packet=validateCosmic(await response.json());}catch{ $('cosmic-scene').append(el('p','caption','Source packet rejected or unavailable. No partial event history was accepted.'));$('matter-inspector').textContent='Source unavailable. Return to the hub to choose another path.';$('epoch').disabled=true;$('sandbox-entry').disabled=true;return;}
 const epochs=[...new Set(packet.events.flatMap(e=>[e.occurredAt,e.recordedAt]))].sort((a,b)=>Date.parse(a)-Date.parse(b));
 let selected='universe',focus='universe',history=[],list=false,projection;
+let symbolCatalog=null,symbolStatus='Candidate symbol interpretations are loading.';
 const substrate=el('canvas','cosmic-substrate');substrate.setAttribute('aria-hidden','true');
 const disposeSubstrate=mountSubstrate(substrate,{host:$('cosmic-scene'),toggle:$('substrate-toggle'),getBodyCount:()=>projection?.bodies.filter(b=>b.active).length||0});
 window.addEventListener('pagehide',event=>{if(!event.persisted)disposeSubstrate();});
@@ -44,12 +46,24 @@ function inspector(){const host=$('matter-inspector');host.replaceChildren();con
  const dl=el('dl','evidence-dl');for(const [k,v] of fields)dl.append(el('dt','',k),el('dd','',v));host.append(dl);
  if(atom){host.append(button('Return to subject →',()=>choose(atom.subject)));const bonds=projection.relationships.filter(r=>r.kind==='bond'&&(r.from===atom.id||r.to===atom.id));host.append(el('h3','','EXPLICIT BONDS'));for(const r of bonds)host.append(button(`${r.id} → ${r.from===atom.id?r.to:r.from}`,()=>choose(r.from===atom.id?r.to:r.from)));if(!bonds.length)host.append(el('p','','No explicit bonds in this packet. Nearby time is not evidence of causation.'));}
  else{if(body.id!==focus)host.append(button('Descend into '+body.label,()=>descend(body.id)));host.append(el('h3','','RECIPROCAL STRUCTURE'));for(const r of projection.relationships.filter(r=>r.kind==='contains'&&(r.from===body.id||r.to===body.id))){const target=r.from===body.id?r.to:r.from;host.append(button(`${r.from===body.id?'↘ Child':'↗ Parent'} · ${projection.bodies.find(b=>b.id===target).label}`,()=>choose(target)));}host.append(el('h3','','SOURCE EVENTS'));for(const id of body.eventIds)host.append(button(id,()=>choose(id)));}
- host.append(el('h3','','EVIDENCE BOUNDARY'),el('p','','This synthetic packet illustrates the design. The map owns geometry only; it grants no authority and claims no live agent runtime. A1-A1 remains provisional and perspective-dependent.'));
+ host.append(el('h3','','VISUAL MEANINGS'));
+ const subject=atom?atom.subject:body.id;
+ if(!symbolCatalog)host.append(el('p','symbol-status',symbolStatus));
+ else{const records=symbolsForSubject(symbolCatalog,subject);if(!records.length)host.append(el('p','symbol-status','No candidate interpretation is bound to this subject.'));
+  for(const record of records){const section=el('section','symbol-record');section.dataset.symbolId=record.id;section.dataset.symbolRevision=record.revision;section.append(el('h4','',record.motif),el('p','tag','CANDIDATE INTERPRETATION'),el('p','',record.meaning));
+   const details=el('dl','evidence-dl');for(const [label,value] of [['Context',record.context],['Revision',String(record.revision)],['Reference',record.source.reference],['Image attribution',record.source.attribution],['Image asset rights',record.source.assetRights]])details.append(el('dt','',label),el('dd','',value));section.append(details);
+   for(const [label,items] of [['Preserved invariants',record.invariants],['Failure examples',record.failureExamples]]){section.append(el('h4','',label));const list=el('ul');for(const item of items)list.append(el('li','',item));section.append(list);}host.append(section);
+  }
+ }
+ host.append(el('h3','','EVIDENCE BOUNDARY'),el('p','','This synthetic packet illustrates the design. The map owns geometry only; it grants no authority and claims no live agent runtime. Visual interpretations do not establish physical claims or operating permission. A1-A1 remains provisional and perspective-dependent.'));
 }
 function render(){const at=epochs[Number($('epoch').value)],knownAt=$('known-then').checked?at:epochs.at(-1);projection=projectCosmic(packet,{at,knownAt});$('epoch-label').textContent=new Date(at).toISOString().slice(11,16)+' UTC';$('matter-count').textContent=`${projection.atoms.length} atoms · ${eventMolecules(projection).length} molecules`;$('focus-label').textContent=projection.bodies.find(b=>b.id===focus).label;$('cosmic-back').disabled=!history.length;$('cosmic-scene').hidden=world.hidden||list;$('matter-list').hidden=!list;$('list-toggle').setAttribute('aria-pressed',String(list));drawScene();
  const host=$('matter-list');host.replaceChildren();for(const e of projection.atoms){const b=button(e.type,()=>choose(e.id),'event-row');b.append(el('small','',`${e.id} · ${e.subject} · occurred ${e.occurredAt.slice(11,16)} · recorded ${e.recordedAt.slice(11,16)}`));host.append(b);}if(!projection.atoms.length)host.append(el('p','','No visible events within this replay coordinate. This does not establish non-occurrence.'));inspector();}
 $('epoch').addEventListener('input',render);$('known-then').addEventListener('change',render);$('list-toggle').addEventListener('click',()=>{list=!list;render();});$('cosmic-root').addEventListener('click',()=>descend('universe'));$('cosmic-back').addEventListener('click',()=>{const previous=history.pop();if(!previous)return;({focus,selected}=previous);$('epoch').value=previous.epoch;$('known-then').checked=previous.known;render();});
 $('sandbox-entry').addEventListener('click',()=>{const r=resolveEntry({contract:'environment-entry/v0',id:'bounded-world',mode:'sandbox',destination:'/cosmic.html'});$('entry-result').textContent=`${r.code}: an owning server must verify identity, scope, expiry and admission before a sandbox session can begin. No session was created.`;});render();
+
+// Symbol absence is independent of the event field. Never accept partial data.
+(async()=>{try{const response=await fetch('./data/contextual-symbols.json',{signal:AbortSignal.timeout(4000)});if(!response.ok)throw new Error('Catalog unavailable');symbolCatalog=validateSymbols(await response.json(),{subjectIds:packet.bodies.map(b=>b.id)});}catch{symbolStatus='Candidate symbol interpretations are unavailable or rejected. Event evidence remains available.';}inspector();})();
 
 matchMedia('(max-width:600px)').addEventListener('change',render);
 window.addEventListener('cosmicvisibility',render);
