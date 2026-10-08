@@ -37,7 +37,7 @@ The CLI emits JSON. Public GitHub rate limits/refusals remain explicit errors. N
 | --- | --- |
 | Shared identity graph + bounded cyclic traversal | implemented, tested |
 | Reciprocal paths derived from one relationship | implemented, tested |
-| Constellation / directory / within-hub rendering | implemented |
+| WebGL 3D constellation / directory / within-hub rendering | implemented; browser/art acceptance recorded separately |
 | Back restores selection, lens and filters | implemented, tested |
 | Public GitHub metadata + revision observer | implemented, local live source read verified |
 | Local inert dependency inventory + fixture gate + receipt | implemented, tested; simulation only |
@@ -56,19 +56,21 @@ The nested HTML/CSS/JSON environment is a projection of a graph, not a hierarchy
 
 `npm test` runs offline Node invariants. `npm run check` validates graph/development-path JSON and JavaScript syntax. Optional `node scripts/browser-smoke.cjs` uses Playwright installed in the operator's environment; it is not a runtime dependency. The smoke starts and stops its own local server. Browser acceptance covers selection, reciprocal context, proof/refusal, filtering, back, invalid-source rejection and mobile overflow. See the [foundation receipt](docs/receipts/2026-10-07-foundation.md) for results and limitations.
 
+Optional `node scripts/world3d-smoke.cjs` uses operator-provided Playwright/Chromium to verify the actual WebGL context, GPU draw errors, orbit, picking, evidence, replay, landmarks, lifecycle and phone/desktop projection. `PLAYWRIGHT_CHROMIUM_EXECUTABLE` can select an existing browser. The PR's browser CI installs its verification dependency outside the application and captures desktop/phone views. [Real 3D receipt](docs/receipts/2026-10-08-real-3d-renderer.md).
+
 ## Rights and lineage
 
 Apache-2.0 covers this repository's authored code, not third-party source content, datasets or proprietary Atlas materials. Discovery/access does not imply permission to copy, install, redistribute, execute or train on a source. Jarrod Cobb's Hub Technology Codex vision is the origin; GitHub topology, published Swarm boundaries, Lovable-built domain work and Codex collaboration are acknowledged as lineage. No proprietary Atlas implementation was imported.
 
 ## Cosmic event field
 
-Use **Enter the event field** to open `cosmic.html`. Scrub occurrence time, distinguish late-recorded knowledge, inspect explicit event bonds, descend through galaxy/system/planet scales and return to the prior scale. Mobile opens one readable scale at a time. The twin greeting is intentionally text-only.
+Use **Enter the event field** to open `cosmic.html`. Scrub occurrence time, distinguish late-recorded knowledge, inspect explicit event bonds, descend through galaxy/system/planet scales and return to the prior scale. The spatial views now use real WebGL meshes with depth, perspective and lighting. Drag to orbit, scroll/pinch to zoom and Shift-drag to pan. Descend and Back move between source contexts; directory and event lists remain readable alternatives. The twin greeting is intentionally text-only.
 
 This newly authored packet is **synthetic design data**, not private Atlas telemetry. Valid UTC event timestamps, source references, explicit supersession and bounded cyclic containment keep replay inspectable. The entry contract grants navigation only; all sandbox entries are refused until an owning server admission verifier is wired. No background agents or persistent sessions are started.
 
 See the [cosmic design](docs/superpowers/specs/2026-10-07-cosmic-entry-design.md) and [verification receipt](docs/receipts/2026-10-07-cosmic-entry.md). Private Atlas runtime/cosmos extensions remain separately owned.
 
-The mathematical sine-field substrate expands with active projected architecture, with pause and reduced-motion controls. Its points are decoration, not events. The twin greeting belongs to the separate V1 experience, represented at the currently unconnected sandbox door. [Substrate receipt](docs/receipts/2026-10-07-substrate.md).
+The 3D star field and luminous rings are view decoration, not events. Motion can be paused and respects reduced motion. The twin greeting belongs to the separate V1 experience, represented at the currently unconnected sandbox door. [Substrate receipt](docs/receipts/2026-10-07-substrate.md).
 
 ## V1 world map
 
