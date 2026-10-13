@@ -43,6 +43,9 @@ The CLI emits JSON. Public GitHub rate limits/refusals remain explicit errors. N
 | Local inert dependency inventory + fixture gate + receipt | implemented, tested; simulation only |
 | Fifteen continuing development paths | planned, specified; branch refs seeded after verified foundation |
 | Live Diamond/Atlas/Swarm federation, private access, persistent event journal | not implemented |
+| Council roster and Atlas #209 handoff proposal | read-only declared projection; no provider availability or dispatch |
+
+[Council v0](council.html) previews a provider recommendation without executing it. Its [decision record](docs/decisions/council-v0.md) describes the proposed Atlas adapter boundary and deferred integration.
 
 ## Where the next branches go
 

@@ -1,0 +1,18 @@
+# Council v0: proposal projection, not an execution plane
+
+Decision (2026-10-13): Hub displays a declared Council roster and GitHub task references. Council deliberates and recommends; it has no sovereignty, scheduler, provider connection, credentials, or dispatch. The first proposed handoff references [Atlas Guardian G-ST-001 #209](https://github.com/hometradescompany-director/atlas/issues/209), as directed in [Hub issue #17](https://github.com/hometradescompany-director/Hub-Tech-Codex/issues/17). The Atlas issue was not readable from this environment; its status, owner acceptance and execution are **unknown**. `handoffReceipt: null` is intentional. Gemini is an unverified legacy seat, not a live process. The Copilot seat is also only declared here; a GitHub assignment elsewhere is not provider availability evidence.
+
+The `hub-council/v0` packet in `data/council.json` is a read-only projection. Each provider has a stable typed ID, state (`declared`, `discovered`, `available-verified`, `unavailable`, `unknown`, `retired`), provenance and optional time-bounded availability receipt. The static packet rejects `available-verified` outright until a separate authenticated adapter can establish it; a user-editable JSON receipt alone is not proof. Tasks reference external GitHub issues/PRs with owner, proposal, target repository, read-and-propose scope, dependencies, provenance (scope and observation time), status and handoff receipt. A provider picker previews a recommendation only; changing it does not assign or dispatch anything. No private conversations or credentials enter this packet.
+
+## Proposed Atlas federation adapter boundary
+
+`atlas-council-decision/v0` is a **Hub-side proposed shape**, not an Atlas-published or implemented endpoint. A future authenticated server adapter must bind an Atlas-owned provider identity and task ID to the exact GitHub source reference, target repository and permission scope; carry issued/expiry times, an Atlas event/provenance reference, a signed allow/deny decision with explicit denial reason, and a scoped replay key. The server must verify signature and issuer against an Atlas-published versioned contract and trusted key, enforce expiry and revocation, check repository permissions independently, and persist replay keys atomically across retries. The pure `reviewHandoff` mock accepts an injected verifier and replay store solely to exercise refusal/idempotence semantics; a returned `review_only` never authorises work. Without a verifier or replay store it fails closed. Witness may record observations, never authorise. No client-side signature, fixture checkbox or discovery state can confer authority.
+
+## Integration sequence
+
+1. Finish source-intelligence and reciprocal-events prerequisites; reconcile public contracts with their owners before promoting any standing.
+2. Agree a versioned public Atlas decision contract, authenticating the server roundtrip, expiry/revocation and denial; keep keys server-side and receipts scoped to their source. Do not invent an Atlas endpoint or copy private code.
+3. Only after repo permissions and Atlas approval where applicable, design a separately reviewed dispatch path with durable idempotency and a returned handoff receipt. Swarm is a possible downstream execution transport, not an authority source. Record an accepted/denied receipt before claiming work is active.
+4. Optional Gemini connector needs independently verified availability, consent/terms, scoped credentials server-side and its own tests; a legacy seat or discovered API is not a live connector.
+
+No deployment, live DB mutation, paid provider call, background agent or auto-merge is part of v0. Public metadata discovery is not permission to execute.

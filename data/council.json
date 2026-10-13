@@ -1,0 +1,40 @@
+{
+  "contract": "hub-council/v0",
+  "standing": "declared-proposal",
+  "providers": [
+    {
+      "id": "provider:github-copilot",
+      "kind": "coding-assistant",
+      "label": "Copilot",
+      "state": "declared",
+      "availabilityReceipt": null,
+      "provenance": "https://github.com/hometradescompany-director/Hub-Tech-Codex/issues/17"
+    },
+    {
+      "id": "provider:google-gemini",
+      "kind": "coding-assistant",
+      "label": "Gemini · unverified legacy seat",
+      "state": "unknown",
+      "availabilityReceipt": null,
+      "provenance": "https://github.com/hometradescompany-director/Hub-Tech-Codex/issues/17"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "proposal:atlas-209",
+      "source": {"kind": "issue", "repository": "hometradescompany-director/atlas", "number": 209},
+      "owner": "hometradescompany-director/atlas",
+      "proposal": "Request Atlas Guardian G-ST-001 review via the owning issue; no work is dispatched here.",
+      "targetRepository": "hometradescompany-director/atlas",
+      "permissionScope": "read-and-propose",
+      "dependencies": ["Atlas-owned approval and repository permissions before any execution"],
+      "status": "proposed",
+      "provenance": {
+        "reference": "https://github.com/hometradescompany-director/Hub-Tech-Codex/issues/17",
+        "observedAt": "2026-10-13T07:28:56Z",
+        "scope": "founder direction in public issue; not an Atlas status observation"
+      },
+      "handoffReceipt": null
+    }
+  ]
+}

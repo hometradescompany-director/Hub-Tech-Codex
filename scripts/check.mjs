@@ -1,4 +1,5 @@
 import {validateCosmic} from '../src/cosmic.mjs';
+import {validateCouncil} from '../src/council.mjs';
 import {validateSymbols} from '../src/contextual-symbols.mjs';
 import {readFile,readdir} from 'node:fs/promises';import {spawnSync} from 'node:child_process';
 import {validateGraph} from '../src/graph.mjs';import {validatePaths} from '../src/paths.mjs';
@@ -7,4 +8,5 @@ for(const dir of ['src','scripts'])for(const file of await readdir(new URL(`../$
 
 const field=validateCosmic(JSON.parse(await readFile(new URL('../data/cosmic-fixture.json',import.meta.url),'utf8')));
 validateSymbols(JSON.parse(await readFile(new URL('../data/contextual-symbols.json',import.meta.url),'utf8')),{subjectIds:field.bodies.map(b=>b.id)});
+validateCouncil(JSON.parse(await readFile(new URL('../data/council.json',import.meta.url),'utf8')));
 console.log('Graph, paths, cosmic field, contextual symbols and JavaScript syntax validated.');
