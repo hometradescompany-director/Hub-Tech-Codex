@@ -1,0 +1,46 @@
+{
+  "schema_version": "v1-population/1",
+  "generator_version": "v1-earth-origins/1",
+  "seed": "v1-earth-2026",
+  "standing": "staged-fictional-population",
+  "content_digest": "be49eb97dd118abf555ddf5aeaf2f5a1cade5dc02b38d99cfcfe8aad10e4822f",
+  "identities": 1000,
+  "decisions": 10000,
+  "relationships": 500,
+  "integrity": "ok",
+  "decision_links": 9000,
+  "life_pattern_counts": {
+    "unpaid-care": 63,
+    "informal-learning": 63,
+    "between-directions": 63,
+    "mixed-livelihoods": 63,
+    "study-and-community": 63,
+    "home-and-growing": 63,
+    "creative-practice": 63,
+    "steady-employment": 63,
+    "small-enterprise": 62,
+    "practical-work": 62,
+    "technical-work": 62,
+    "seasonal-work": 62,
+    "returning-to-learning": 62,
+    "community-organising": 62,
+    "quiet-routine": 62,
+    "leisure-and-friendship": 62
+  },
+  "artifacts": {
+    "origins.sqlite": {
+      "sha256": "8e9e54d296b50fbc5c821b73293b30e237a79a5a2faa22f91141ef5f11ada980"
+    },
+    "origins.sqlite.gz": {
+      "sha256": "6a646d82be228a2af902000d9279f3c29dd50c5505573c61e33be36766d6c72a"
+    }
+  },
+  "professional_registry_import": "not-performed",
+  "activation": "none",
+  "limitations": [
+    "Procedural combinations of 16 authored situations, not 1000 independently hand-written lives.",
+    "Not statistically representative of Earth society.",
+    "Background links are fictional acquaintances, not observed causal evidence.",
+    "No production account bindings, sessions, permissions or experienced V1 events."
+  ]
+}
