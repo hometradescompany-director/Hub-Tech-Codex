@@ -32,6 +32,11 @@ The demonstration parses an operator-supplied package manifest using the public 
 
 ## Provenance
 
+Candidate [contextual visual meanings](worlds/contextual-symbols.md) bind explicit
+interpretations to existing fixture IDs. A motif requires context and revision;
+its meaning, invariants, failure examples and unknown image attribution remain
+visible in the evidence inspector. These records grant no authority.
+
 Originator: Jarrod Cobb's long-running Hub Technology Codex vision; this dated implementation is collaborative agent development. Public GitHub topology, Swarm's published boundary, Lovable-built domain work and Codex development informed the interface direction. Historical imagery/conversations preserve design lineage; they are not proof of live integration, clinical standing or runtime capability. All code added in this foundation is newly authored here.
 
 ## Continuing work
