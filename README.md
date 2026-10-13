@@ -58,13 +58,15 @@ The nested HTML/CSS/JSON environment is a projection of a graph, not a hierarchy
 
 Optional `node scripts/world3d-smoke.cjs` uses operator-provided Playwright/Chromium to verify the actual WebGL context, GPU draw errors, orbit, picking, evidence, replay, landmarks, lifecycle and phone/desktop projection. `PLAYWRIGHT_CHROMIUM_EXECUTABLE` can select an existing browser. The PR's browser CI installs its verification dependency outside the application and captures desktop/phone views. [Real 3D receipt](docs/receipts/2026-10-08-real-3d-renderer.md).
 
+Optional `node scripts/cosmic-shell-smoke.cjs` checks Cosmic launcher/world landmarks, HUD clearance and body click targets at phone and desktop sizes, then exit focus and re-entry. It also requires operator-provided Playwright and Chromium; `PLAYWRIGHT_CHROMIUM_EXECUTABLE` can select an existing browser. [Layout and accessibility verification](docs/receipts/2026-10-07-cosmic-layout-accessibility.md) records the current checks and browser limitation.
+
 ## Rights and lineage
 
 Apache-2.0 covers this repository's authored code, not third-party source content, datasets or proprietary Atlas materials. Discovery/access does not imply permission to copy, install, redistribute, execute or train on a source. Jarrod Cobb's Hub Technology Codex vision is the origin; GitHub topology, published Swarm boundaries, Lovable-built domain work and Codex collaboration are acknowledged as lineage. No proprietary Atlas implementation was imported.
 
 ## Cosmic event field
 
-Use **Enter the event field** to open `cosmic.html`. Scrub occurrence time, distinguish late-recorded knowledge, inspect explicit event bonds, descend through galaxy/system/planet scales and return to the prior scale. The spatial views now use real WebGL meshes with depth, perspective and lighting. Drag to orbit, scroll/pinch to zoom and Shift-drag to pan. Descend and Back move between source contexts; directory and event lists remain readable alternatives. The twin greeting is intentionally text-only.
+Use **Enter the event field** to open `cosmic.html`. Scrub occurrence time, distinguish late-recorded knowledge, inspect explicit event bonds, descend through galaxy/system/planet scales and return to the prior scale. The spatial views use real WebGL meshes with depth, perspective and lighting. Drag to orbit, scroll/pinch to zoom and Shift-drag to pan. Mobile and short landscape scenes remain navigable below the controls; directory and event lists remain readable alternatives. The twin greeting is intentionally text-only.
 
 This newly authored packet is **synthetic design data**, not private Atlas telemetry. Valid UTC event timestamps, source references, explicit supersession and bounded cyclic containment keep replay inspectable. The entry contract grants navigation only; all sandbox entries are refused until an owning server admission verifier is wired. No background agents or persistent sessions are started.
 
@@ -79,3 +81,7 @@ The 3D star field and luminous rings are view decoration, not events. Motion can
 ### Play the first V1 fixture
 
 Use **Play V1 fixture** or open `/v1.html` on the development server. Create a character, travel, practise, forge a focus and cast a spark. Device persistence is opt-in; event history can be exported. This is a newly authored local rehearsal, not the canonical Xianxia engine or a shared server session. [Implementation and agent-dispatch receipt](docs/receipts/2026-10-07-v1-playable.md).
+
+### V1 origin population
+
+[1,000 fictional Earth origins](data/v1-population/README.md) are staged in an offline SQLite database: unique names, varied life paths and 10 consequential decision memories each. [Population design](docs/worlds/V1-POPULATION-DATABASE.md). The builder requires Node.js 22+ and an explicitly selected Python 3.11–3.13 interpreter; its runtime receipt stays separate from cohort metadata. They have no admitted sessions, world experience or authority. This newly authored cohort is independent of the as-yet unimported professional registry.
