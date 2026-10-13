@@ -14,7 +14,7 @@ Hub Tech Codex is a next-generation interface for discovering and relating the o
 
 ## Representation stack
 
-JSON gives stable IDs, relationships, source references and explicit standings. HTML is semantic interaction. CSS supplies layout/depth without semantic authority. JavaScript mediates selection, public metadata observations and bounded local inventory. Rendering is not execution permission.
+JSON gives stable IDs, relationships, source references and explicit standings. HTML is semantic interaction. CSS supplies the interface layout without semantic authority. Native WebGL supplies actual three-dimensional meshes, perspective, depth testing and lighting; semantic HTML labels remain selectable source projections. JavaScript mediates camera/picking, selection, public metadata observations and bounded local inventory. Rendering is not execution permission.
 
 The relation graph may have cycles and multiple parents. Visual nesting is a projection; it never duplicates a child identity or implies ownership. Reciprocal navigation derives from the same edge. Constellation, directory and within-hub views use identical IDs. Six-faced space is an experimental lens, not an invariant.
 

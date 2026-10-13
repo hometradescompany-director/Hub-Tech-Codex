@@ -1,3 +1,5 @@
+import {mountWorld3D} from './world3d.mjs';
+import {hubScene} from './world-scenes.mjs';
 import {resolveEntry} from './entry.mjs';
 import {validateGraph,related,searchNodes,KINDS,safeLink} from './graph.mjs';
 import {createNavigation,navigate,goBack} from './navigation.mjs';
@@ -17,16 +19,16 @@ function choose(id){change({selected:id});}
 function badge(standing){return el('span',`standing ${standing}`,standing.toUpperCase());}
 function link(url,label){const a=el('a','',label);a.href=safeLink(url);a.target='_blank';a.rel='noopener noreferrer';return a;}
 function relation(r){const b=el('button','relation-row');b.append(el('span','relation-arrow',r.direction==='outgoing'?'↗':'↙'));const label=el('span','',r.node.label);label.append(el('small','',`${r.direction} · ${r.edge.kind} · ${r.edge.standing}`));b.append(label);b.addEventListener('click',()=>choose(r.node.id));return b;}
+let hub3d=null,savedCamera=null;
+window.addEventListener('pagehide',event=>{if(!event.persisted)hub3d?.dispose();});
 function renderExplorer(nodes){
-  const host=$('explorer');host.replaceChildren();host.className=state.current.lens;
-  if(!nodes.length){host.append(el('p','empty','No identities match. Try another path or clear your filter.'));return;}
+  const host=$('explorer');
+  if(state.current.lens!=='constellation'){if(hub3d){savedCamera=hub3d.cameraState();hub3d.dispose();hub3d=null;}host.replaceChildren();}
+  host.className=state.current.lens;
+  if(!nodes.length){hub3d?.setActive(false);host.replaceChildren();hub3d?.dispose();hub3d=null;host.append(el('p','empty','No identities match. Try another path or clear your filter.'));return;}
   if(state.current.lens==='constellation'){
-    const positions=new Map();const root=nodes.find(n=>n.id==='codex');const others=nodes.filter(n=>n!==root);
-    if(root)positions.set(root.id,[50,50]);
-    others.forEach((n,i)=>{const outer=i%2===0;const count=outer?Math.ceil(others.length/2):Math.floor(others.length/2);const angle=(Math.floor(i/2)/Math.max(1,count))*Math.PI*2-Math.PI/2+(outer?0:.25);const rx=outer?40:24,ry=outer?39:25;positions.set(n.id,[50+Math.cos(angle)*rx,50+Math.sin(angle)*ry]);});
-    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 100 100');svg.setAttribute('preserveAspectRatio','none');svg.classList.add('connections');svg.setAttribute('aria-hidden','true');
-    for(const edge of graph.edges){const a=positions.get(edge.from),b=positions.get(edge.to);if(!a||!b)continue;const line=document.createElementNS(svg.namespaceURI,'line');for(const [k,v] of Object.entries({x1:a[0],y1:a[1],x2:b[0],y2:b[1]}))line.setAttribute(k,v);svg.append(line);}host.append(svg);
-    for(const n of nodes){const [x,y]=positions.get(n.id),b=el('button',`node ${n.id==='codex'?'core':''}`);b.dataset.kind=n.kind;b.dataset.id=n.id;b.style.left=`${x}%`;b.style.top=`${y}%`;b.setAttribute('aria-label',`Explore ${n.label}`);b.setAttribute('aria-pressed',String(n.id===state.current.selected));b.append(el('span','orb',symbols[n.kind]),el('span','',n.label));b.addEventListener('click',()=>choose(n.id));host.append(b);}
+    if(!hub3d){host.replaceChildren();hub3d=mountWorld3D(host,{onSelect:choose,camera:savedCamera,onError:message=>{$('status').textContent=message;}});}
+    hub3d.setScene(hubScene(graph,nodes,state.current.selected));hub3d.setActive(true);hub3d.setMotion(false);
   }else if(state.current.lens==='list'){
     host.className='directory';for(const n of nodes){const b=el('button','card');b.dataset.id=n.id;b.append(el('p','eyebrow',`${symbols[n.kind]} / ${n.kind.toUpperCase()}`),el('h3','',n.label),el('p','',n.summary),badge(n.standing));b.addEventListener('click',()=>choose(n.id));host.append(b);}
   }else{
@@ -44,7 +46,7 @@ function renderInspector(){
 function render(){const nodes=searchNodes(graph,state.current.query,state.current.kind);$('search').value=state.current.query;$('kind').value=state.current.kind;$('node-count').textContent=`${nodes.length} identities`;for(const b of document.querySelectorAll('[data-lens]'))b.setAttribute('aria-pressed',String(b.dataset.lens===state.current.lens));$('back').disabled=!state.history.length;$('context-label').textContent=graph.nodes.find(n=>n.id===state.current.selected)?.label||'Core constellation';renderExplorer(nodes);renderInspector();}
 $('search').addEventListener('input',e=>{state={...state,current:{...state.current,query:e.target.value}};render();$('search').focus();});$('kind').addEventListener('change',e=>change({kind:e.target.value}));
 for(const b of document.querySelectorAll('[data-lens]'))b.addEventListener('click',()=>change({lens:b.dataset.lens}));$('back').addEventListener('click',()=>{state=goBack(state);render();});
-for(const b of document.querySelectorAll('[data-section]'))b.addEventListener('click',()=>{const isPaths=b.dataset.section==='paths';$('paths-section').hidden=!isPaths;$('explore-section').hidden=isPaths;for(const x of document.querySelectorAll('[data-section]'))x.classList.toggle('active',x===b);});
+for(const b of document.querySelectorAll('[data-section]'))b.addEventListener('click',()=>{const isPaths=b.dataset.section==='paths';$('paths-section').hidden=!isPaths;$('explore-section').hidden=isPaths;hub3d?.setActive(!isPaths);for(const x of document.querySelectorAll('[data-section]'))x.classList.toggle('active',x===b);});
 for(const b of document.querySelectorAll('[data-close]'))b.addEventListener('click',()=>$(b.dataset.close).close());$('open-source').addEventListener('click',()=>$('source-dialog').showModal());$('open-proof').addEventListener('click',()=>$('proof-dialog').showModal());
 $('source-form').addEventListener('submit',async e=>{e.preventDefault();$('observe-submit').disabled=true;$('source-result').textContent='Observing public source…';
   try{const r=await observeRepository($('repository-input').value);if(!r.ok){$('source-result').textContent=`${r.code}: ${r.detail}`;return;}
