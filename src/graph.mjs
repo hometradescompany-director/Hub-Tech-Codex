@@ -1,3 +1,4 @@
+import {validateBoundedReferences} from './bounded-references.mjs';
 export const KINDS = Object.freeze(['hub','repository','tool','database','api','dataset','agent','surface']);
 export const STANDINGS = Object.freeze(['observed','declared','planned','evaluated','authorised','connected']);
 const text=(v)=>typeof v==='string' && v.trim().length>0 && v.length<=2000;
@@ -18,6 +19,8 @@ export function validateGraph(graph) {
     if(edgeIds.has(e.id))throw new Error('Duplicate edge identity');edgeIds.add(e.id);
     if(!ids.has(e.from)||!ids.has(e.to))throw new Error('Unknown relationship endpoint');
   }
+  const bounded = validateBoundedReferences(graph.edges, [...ids], 20000);
+  if (!bounded.valid) throw new Error(`Graph boundary violation: ${bounded.reason}`);
   return graph;
 }
 export function related(graph,id) {
