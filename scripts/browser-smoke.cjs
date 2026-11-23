@@ -21,7 +21,7 @@ const assert=require('node:assert/strict');const fs=require('node:fs');
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'front doors desktop horizontal overflow');
  await page.setViewportSize({width:390,height:844});
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'front doors mobile horizontal overflow');
- await page.getByRole('link',{name:'Explore graph'}).click();
+ await page.getByRole('link',{name:'← Explore graph',exact:true}).click();
  await page.waitForURL('http://127.0.0.1:4173/');
  await page.setViewportSize({width:1440,height:1000});
  await page.locator('[data-lens=list]').click();await page.locator('#search').fill('Swarm');assert.equal(await page.locator('.card').count(),2);await page.locator('[data-lens=nested]').click();await page.locator('#back').click();assert.equal(await page.locator('#search').inputValue(),'Swarm');
