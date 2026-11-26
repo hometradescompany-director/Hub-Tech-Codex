@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#172922">
+    <title>The Commons Pub — simulator</title>
+    <!-- Hub Tech Codex adaptation: mount the demo under the Hub's builds path. -->
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../../releases.html" aria-label="The Commons Pub · back to builds">THE COMMONS PUB</a>
+      <span class="state-label">SIMULATED STATE ONLY</span>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">LOCAL COGNITIVE STATE PLAYGROUND</p>
+        <h1>A place to pause,<br>try a different view.</h1>
+        <p class="lede">A deterministic, local-only simulation. No agent runs, tools, identities, or permissions are changed.</p>
+      </section>
+
+      <section class="workspace" aria-label="Simulator controls">
+        <div class="panel controls">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">SESSION SETUP</p>
+              <h2>At the table</h2>
+            </div>
+            <span id="phase" class="phase">OUTSIDE</span>
+          </div>
+          <p class="fixture">Participant fixture · Observer fixture</p>
+          <label class="consent">
+            <input id="consent" type="checkbox">
+            <span>I consent to this bounded simulation. I can leave or reset at any time.</span>
+          </label>
+          <div class="setup-row">
+            <label for="duration">Session length</label>
+            <select id="duration">
+              <option value="4">4 simulated ticks</option>
+              <option value="8" selected>8 simulated ticks</option>
+              <option value="12">12 simulated ticks</option>
+            </select>
+          </div>
+          <div class="setup-row">
+            <label for="seed">Replay seed</label>
+            <input id="seed" type="number" min="0" max="4294967295" value="42">
+          </div>
+          <button id="enter" class="button primary">Enter the simulation</button>
+          <p id="message" class="message" aria-live="polite">No session is active.</p>
+
+          <div class="divider"></div>
+          <label class="range-label" for="modulation">
+            <span>Simulated presentation shift</span>
+            <output id="modulation-value" for="modulation">0%</output>
+          </label>
+          <input id="modulation" type="range" min="0" max="100" step="10" value="0" disabled>
+          <button id="apply" class="button secondary" disabled>Apply simulated shift</button>
+          <div class="actions">
+            <button id="choices" class="button secondary" disabled>Present choices</button>
+            <button id="recover" class="button secondary" disabled>Recover to baseline</button>
+            <button id="tick" class="button secondary" disabled>Advance one tick</button>
+          </div>
+          <div class="actions exit-actions">
+            <button id="cancel" class="button quiet" disabled>Cancel</button>
+            <button id="disconnect" class="button quiet" disabled>Disconnect</button>
+            <button id="reset" class="button danger" disabled>Emergency reset</button>
+          </div>
+        </div>
+
+        <div class="panel projection">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">2D PROJECTION</p>
+              <h2>What is shown</h2>
+            </div>
+            <span class="projection-dot" aria-hidden="true"></span>
+          </div>
+          <p id="projection-copy" class="projection-copy">The participant fixture is outside. Start only with explicit consent.</p>
+          <div class="choice-area">
+            <p class="eyebrow">SIMULATED CHOICE PRESENTATION</p>
+            <div id="choice-list" class="choice-list">
+              <span class="choice">Listen</span>
+              <span class="choice">Reflect</span>
+              <span class="choice">Rest</span>
+            </div>
+          </div>
+          <p id="simulated-delay" class="simulated-delay">Simulated response timing: baseline</p>
+          <div class="boundary-note">
+            <strong>Canonical boundary</strong>
+            <span>Identity and authority stay outside this simulation. External tool execution is unavailable.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel audit-panel" aria-label="Audit receipt">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">LOCAL AUDIT RECEIPT</p>
+            <h2>Session events</h2>
+          </div>
+          <span id="audit-status" class="audit-status">No events</span>
+        </div>
+        <ol id="event-list" class="event-list"></ol>
+        <p class="audit-footnote">Events are in-memory, versioned, and hash-chained. They contain fixture IDs only; nothing is sent over the network.</p>
+      </section>
+      <footer>Commons Pub v0.1 · JavaScript simulator · no external agent execution · no 3D renderer</footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "standing": "synthetic-illustrative-only",
+  "corridor": "M1 hypothesis fixture, not live Queensland traffic data",
+  "intervalMinutes": 15,
+  "scenarios": {
+    "posted_60": [
+      {"durationMinutes":15,"postedSpeedKph":60,"flowVph":3600,"queueVehicles":210,"meanTravelTimeMinutes":28,"mergeAttempts":180,"mergeSuccessRatio":0.73},
+      {"durationMinutes":15,"postedSpeedKph":60,"flowVph":3500,"queueVehicles":235,"meanTravelTimeMinutes":31,"mergeAttempts":190,"mergeSuccessRatio":0.70},
+      {"durationMinutes":15,"postedSpeedKph":60,"flowVph":3450,"queueVehicles":250,"meanTravelTimeMinutes":33,"mergeAttempts":185,"mergeSuccessRatio":0.69},
+      {"durationMinutes":15,"postedSpeedKph":60,"flowVph":3550,"queueVehicles":240,"meanTravelTimeMinutes":32,"mergeAttempts":195,"mergeSuccessRatio":0.71}
+    ],
+    "posted_80": [
+      {"durationMinutes":15,"postedSpeedKph":80,"flowVph":4050,"queueVehicles":155,"meanTravelTimeMinutes":23,"mergeAttempts":190,"mergeSuccessRatio":0.82},
+      {"durationMinutes":15,"postedSpeedKph":80,"flowVph":4150,"queueVehicles":145,"meanTravelTimeMinutes":22,"mergeAttempts":200,"mergeSuccessRatio":0.84},
+      {"durationMinutes":15,"postedSpeedKph":80,"flowVph":4100,"queueVehicles":150,"meanTravelTimeMinutes":22.5,"mergeAttempts":195,"mergeSuccessRatio":0.83},
+      {"durationMinutes":15,"postedSpeedKph":80,"flowVph":4000,"queueVehicles":160,"meanTravelTimeMinutes":23.5,"mergeAttempts":205,"mergeSuccessRatio":0.81}
+    ]
+  }
+}
