@@ -47,6 +47,17 @@ The CLI emits JSON. Public GitHub rate limits/refusals remain explicit errors. N
 
 [Council v0](council.html) previews a provider recommendation without executing it. Its [decision record](docs/decisions/council-v0.md) describes the proposed Atlas adapter boundary and deferred integration.
 
+## Home Trades Co business workspace
+
+[Open the workspace](htc.html) to run a sample customer and property through
+quote acceptance, scheduling, job completion, invoicing and recording a
+sample payment. The customer portal preview and timeline reflect the same
+events. The visual studio lets you compare before and after, change layout
+and finishes, move the camera and download the proposal settings.
+
+See the [migration boundary](docs/decisions/htc-business-workspace.md) for
+source ownership, module coverage and what still needs a production adapter.
+
 ## Where the next branches go
 
 [Roadmap](docs/ROADMAP.md) · [machine-readable dependency topology](data/development-paths.json) · [individual path briefs](docs/paths) · [architecture and provenance](docs/ARCHITECTURE.md)

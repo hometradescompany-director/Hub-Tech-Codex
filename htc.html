@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Home Trades Co workspace · Hub Tech Codex</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./htc.css">
+  <script src="./src/htc-workspace.mjs" type="module"></script>
+</head>
+<body class="htc">
+  <header class="htc-header">
+    <a href="./" class="htc-home">◇ Hub Tech Codex</a>
+    <nav aria-label="Home Trades workspace">
+      <a href="#operations">Operations</a>
+      <a href="#visual-studio">Visual studio</a>
+      <a href="#module-coverage">Modules</a>
+    </nav>
+  </header>
+  <main class="htc-main">
+    <section class="htc-title" aria-labelledby="workspace-title">
+      <div>
+        <p class="htc-kicker">Home Trades Co</p>
+        <h1 id="workspace-title">Business workspace</h1>
+        <p>Run a residential trade job from quote to invoice, then preview design options for the same property.</p>
+      </div>
+      <p class="htc-scope">Sample project · session only</p>
+    </section>
+
+    <section id="operations" aria-labelledby="operations-title">
+      <h2 id="operations-title">Operations</h2>
+      <div class="htc-grid">
+        <article class="htc-card">
+          <p class="htc-kicker" id="project-id">Sample project</p>
+          <h3 id="project-scope">Kitchen refresh</h3>
+          <dl class="htc-details">
+            <dt>Customer</dt><dd id="customer"></dd>
+            <dt>Property</dt><dd id="property"></dd>
+            <dt>Sample quote</dt><dd id="amount"></dd>
+            <dt>Job status</dt><dd id="job-status"></dd>
+          </dl>
+          <div class="htc-actions">
+            <div id="booking" hidden>
+              <label for="visit-window">Visit window (AEST)</label>
+              <select id="visit-window"></select>
+            </div>
+            <button type="button" class="htc-button" id="next-action">Prepare sample quote</button>
+            <button type="button" id="reset-project" hidden>Reset project</button>
+          </div>
+          <p class="htc-message" id="job-message" role="status"></p>
+        </article>
+        <article class="htc-card htc-portal" aria-labelledby="portal-title">
+          <p class="htc-kicker">Customer portal preview</p>
+          <h3 id="portal-title">Project overview</h3>
+          <p>See how the sample job’s status appears to a customer.</p>
+          <dl class="htc-details">
+            <dt>Quote</dt><dd id="quote-status"></dd>
+            <dt>Visit</dt><dd id="visit-status"></dd>
+            <dt>Invoice</dt><dd id="invoice-status"></dd>
+          </dl>
+          <details>
+            <summary>View project timeline</summary>
+            <p id="timeline-empty">No project events yet.</p>
+            <ol id="timeline"></ol>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section id="visual-studio" aria-labelledby="studio-title">
+      <h2 id="studio-title">Visual studio</h2>
+      <div class="htc-card htc-studio">
+        <figure class="htc-viewport">
+          <canvas id="kitchen-scene" aria-label="Perspective view of the sample kitchen" role="img"></canvas>
+          <figcaption id="design-summary" aria-live="polite"></figcaption>
+        </figure>
+        <div class="htc-controls">
+          <fieldset>
+            <legend>Design view</legend>
+            <label><input type="radio" name="design-view" value="before"> Before</label>
+            <label><input type="radio" name="design-view" value="proposal" checked> Proposal</label>
+          </fieldset>
+          <fieldset id="finish-options">
+            <legend>Proposal settings</legend>
+            <label for="layout">Layout</label>
+            <select id="layout">
+              <option value="galley">Galley</option>
+              <option value="l-shape">L-shape</option>
+              <option value="island">Island</option>
+            </select>
+            <label for="cabinetry">Cabinetry</label>
+            <select id="cabinetry">
+              <option value="sage">Sage</option>
+              <option value="navy">Midnight blue</option>
+              <option value="oak">Natural oak</option>
+            </select>
+            <label for="worktop">Worktop</label>
+            <select id="worktop">
+              <option value="stone">Pale stone</option>
+              <option value="timber">Timber</option>
+              <option value="charcoal">Charcoal</option>
+            </select>
+          </fieldset>
+          <div class="htc-angle">
+            <label for="view-angle">View angle</label>
+            <input id="view-angle" type="range" min="20" max="85" value="52">
+          </div>
+          <button type="button" id="download-design">Download proposal settings</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="module-coverage" aria-labelledby="modules-title">
+      <h2 id="modules-title">Business modules</h2>
+      <div class="htc-card">
+        <dl class="htc-module-list">
+          <dt>In this preview</dt>
+          <dd>Customer and property relationship, quote acceptance, job booking and completion, invoicing, payment status, customer portal, project timeline, and before-and-after design.</dd>
+          <dt>Source migration pending</dt>
+          <dd>Leads and estimating, pricing and service catalogue, SOPs and templates, task library, document intake, messaging, supplier and vendor management, reporting, finance and bookkeeping, and back-office settings.</dd>
+        </dl>
+      </div>
+    </section>
+    <noscript><p>Enable JavaScript to run the sample workflow and change the design preview.</p></noscript>
+  </main>
+</body>
+</html>
