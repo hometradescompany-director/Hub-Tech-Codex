@@ -3,6 +3,31 @@
 const {chromium}=require('playwright');
 const {spawn}=require('node:child_process');
 const assert=require('node:assert/strict');const fs=require('node:fs');
+
+async function verifyBuilds(page) {
+  await page.goto('http://127.0.0.1:4173');
+  await page.getByRole('link', { name: /Evaluate builds/ }).click();
+  await page.getByRole('link', { name: 'Open the corridor demo' }).click();
+  await page.locator('#corridor-metrics').waitFor({ state: 'visible' });
+  assert.equal(await page.locator('#corridor-metrics tbody tr').count(), 4);
+  assert.deepEqual(await page.locator('#corridor-metrics tbody tr').first().locator('td').allTextContents(), ['3,525', '4,075']);
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'corridor demo mobile overflow');
+  await page.getByRole('link', { name: /Evaluate builds/ }).click();
+  const navigation = page.waitForResponse(response => response.url().endsWith('/builds/commons-pub/index.html'));
+  await page.getByRole('link', { name: 'Open the simulator' }).click();
+  assert.match((await navigation).headers()['content-security-policy'], /connect-src 'none'/);
+  await page.locator('#enter').click();
+  await page.waitForFunction(() => document.querySelector('#message').textContent.includes('Session refused'));
+  await page.locator('#consent').check();
+  await page.locator('#enter').click();
+  await page.waitForFunction(() => document.querySelector('#message').textContent.includes('Session started'));
+  await page.locator('#reset').click();
+  await page.waitForFunction(() => document.querySelector('#message').textContent.includes('Emergency reset verified'));
+  assert.ok(await page.locator('#event-list li').count() > 0);
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'simulator mobile overflow');
+  assert.equal((await page.request.get('http://127.0.0.1:4173/builds/README.md')).status(), 404);
+}
+
 (async()=>{const server=spawn(process.execPath,['scripts/serve.mjs'],{env:{...process.env,PORT:'4173'},stdio:['ignore','pipe','pipe']});
  await new Promise((resolve,reject)=>{server.stdout.once('data',resolve);server.once('error',reject);server.once('exit',code=>reject(new Error('Server exited '+code)));});
  let browser;try{browser=await chromium.launch({headless:true,args:['--no-proxy-server','--enable-webgl','--use-angle=swiftshader','--enable-unsafe-swiftshader'],...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
@@ -41,6 +66,9 @@ const assert=require('node:assert/strict');const fs=require('node:fs');
  await page.locator('#exit-atlas').click();assert.equal(await page.locator('#atlas-world').isVisible(),false);assert.equal(await page.locator('#enter-atlas').evaluate(e=>e===document.activeElement),true);assert.equal(await page.evaluate(()=>document.body.classList.contains('world-active')),false);
  await page.locator('#enter-atlas').click();assert.equal(await page.locator('#atlas-world').isVisible(),true);await page.locator('#exit-atlas').click();
  await page.route('**/data/cosmic-fixture.json' ,route=>route.fulfill({contentType:'application/json',body:'{"version":"invalid"}'}));await page.reload();await page.waitForFunction(()=>document.getElementById('cosmic-scene').textContent.includes('Source packet rejected'),{},{timeout:1000});
+ await verifyBuilds(page);
+ assert.deepEqual(errors,[]);
  console.log('Cosmic browser: immersive entry/exit, menu/routes, native fullscreen/fallback, keyboard, identity, descend/back, replay, event evidence, sandbox refusal, desktop/mobile PASS');
+ console.log('Build browser: navigation, corridor metrics, simulator refusal and reset, route boundaries, mobile PASS');
  console.log('Browser smoke: selection, proof/refusal, filters, back, invalid source, mocked import/hostile text, reciprocal traversal, desktop/mobile PASS');
 }finally{if(browser)await browser.close();server.kill();}})().catch(e=>{console.error(e);process.exitCode=1});

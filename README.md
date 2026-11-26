@@ -21,6 +21,11 @@ npm run check
 4. Open Diamond proof and supply a package manifest. The inert local inventory parses dependency declarations without running package code.
 5. Inspect the receipt. Remove the fixture approval to see refusal before work.
 
+[Evaluate builds](releases.html) opens Swarm Home Hub's commercial evaluation
+materials, the bundled SEQ Maps and Commons Pub demos, and the upstream traffic
+engineering proof. [Build provenance](builds/README.md) records the revisions
+and files brought into the Hub.
+
 The dependency inventory is a **local demonstration**, not a live Diamond service, vulnerability scan or authority grant. The seed graph is labelled design/declaration data; imported public metadata is an observation, not certification. UI observations are session-local and are not silently saved.
 
 For intentional source capture:

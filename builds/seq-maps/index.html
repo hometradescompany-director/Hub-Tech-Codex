@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>SEQ Maps corridor demo · Hub Tech Codex</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../releases.css">
+  <script type="module" src="./corridor-demo.mjs"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../releases.html"><span class="brand-mark" aria-hidden="true">◇</span> Evaluate builds</a>
+  </header>
+  <main class="release-page">
+    <h1>SEQ Maps corridor demo</h1>
+    <section class="release-card" aria-labelledby="comparison">
+      <p class="release-status">Synthetic traffic data</p>
+      <h2 id="comparison">M1 scenario comparison</h2>
+      <p>The two scenarios use made-up measurements. The comparison describes the fixture and provides no evidence about the effect of changing a speed limit.</p>
+      <p id="corridor-status" role="status">Loading the bundled fixture…</p>
+      <noscript><p>Enable JavaScript to calculate the comparison in your browser.</p></noscript>
+      <table class="release-table" id="corridor-metrics" hidden>
+        <caption>Metrics over four 15-minute intervals in each scenario</caption>
+        <thead>
+          <tr><th scope="col">Metric</th><th scope="col">60 km/h</th><th scope="col">80 km/h</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    <p><a href="https://github.com/hometradescompany-director/SEQ-Maps/blob/ddce01ff3c0a385b095a343173f9cc74c62465a0/docs/M1_VARIABLE_SPEED_PROOF.md">Read the upstream proof and its limits</a></p>
+  </main>
+</body>
+</html>
