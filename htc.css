@@ -1,0 +1,148 @@
+.htc {
+  --surface: #15221f;
+  --stroke: #345047;
+  --accent: #cbefb8;
+  --quiet: #bccbc0;
+  color: #f0f4ec;
+  background: radial-gradient(ellipse at top right, #253b2d 0, transparent 42rem), #101a17;
+}
+
+.htc a { color: var(--accent); }
+
+.htc-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .8rem 2rem;
+  padding: 1.15rem clamp(1rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--stroke);
+}
+
+.htc-home { font-weight: 700; }
+
+.htc-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.2rem;
+}
+
+.htc-main {
+  width: min(100%, 80rem);
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3.5rem);
+  display: grid;
+  gap: 2.4rem;
+}
+
+.htc-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: .8rem 2rem;
+  border-bottom: 1px solid var(--stroke);
+  padding-bottom: 1.2rem;
+}
+
+.htc-title h1 {
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  letter-spacing: -.055em;
+  font-weight: 640;
+  margin-bottom: .65rem;
+}
+
+.htc-title p:last-child,
+.htc-card p:last-child { margin-bottom: 0; }
+
+.htc-scope { color: var(--quiet); }
+
+.htc-kicker {
+  color: var(--accent);
+  margin-bottom: .4rem;
+  font-size: .88rem;
+  font-weight: 700;
+}
+
+.htc-grid,
+.htc-studio {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.htc-card {
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: .85rem;
+  padding: clamp(.9rem, 3vw, 1.5rem);
+}
+
+.htc-card h3 { font-size: 1.32rem; }
+.htc-portal { background: #1b2b24; }
+
+.htc-details,
+.htc-module-list {
+  display: grid;
+  grid-template-columns: minmax(6rem, 1fr) minmax(0, 2fr);
+  gap: .55rem 1rem;
+}
+
+.htc dd { margin: 0; }
+.htc dt { color: var(--quiet); }
+.htc summary { cursor: pointer; color: var(--accent); }
+.htc details { border-top: 1px solid var(--stroke); padding-top: .75rem; }
+.htc li { margin-bottom: .45rem; }
+
+.htc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  align-items: end;
+  margin-top: 1.15rem;
+}
+
+.htc-actions label,
+.htc-actions select { display: block; }
+
+.htc-button { color: #15261a; background: var(--accent); font-weight: 700; }
+.htc-button:hover { background: #deffd0; }
+.htc-message { margin: .6rem 0 0; color: var(--quiet); min-height: 1.6rem; }
+
+.htc-studio {
+  grid-template-columns: minmax(0, 1fr) minmax(13rem, 20rem);
+  gap: clamp(.9rem, 3vw, 1.5rem);
+}
+
+.htc-viewport { margin: 0; min-width: 0; }
+.htc-viewport canvas {
+  display: block;
+  width: 100%;
+  height: clamp(14rem, 46vw, 31rem);
+  background: radial-gradient(ellipse at 50% 45%, #3e5947, #14231c 75%);
+  border: 1px solid #466457;
+  border-radius: .55rem;
+}
+
+.htc-viewport figcaption { color: var(--quiet); margin-top: .65rem; font-size: .9rem; }
+.htc-controls { display: grid; gap: .75rem; align-content: start; min-width: 0; }
+
+.htc-controls fieldset {
+  border: 1px solid var(--stroke);
+  border-radius: .45rem;
+  margin: 0;
+  padding: .6rem .7rem .75rem;
+  min-width: 0;
+}
+.htc-controls fieldset:disabled { opacity: .55; }
+.htc-controls label { line-height: 1.65; }
+.htc-controls input[type=radio], .htc-controls input[type=range] { accent-color: var(--accent); }
+.htc-controls input[type=range], .htc-controls select { width: 100%; }
+.htc-controls select { display: block; margin-bottom: .4rem; padding: .32rem .5rem; }
+
+@media (max-width: 720px) {
+  .htc-grid, .htc-studio { grid-template-columns: 1fr; }
+  .htc-module-list { grid-template-columns: 1fr; }
+  .htc-module-list dd + dt { margin-top: .5rem; }
+}
